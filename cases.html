@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例研究 - 全球教育改革</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式与主页面相同，这里只展示关键差异 */
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #9370db;
+            --dark-bg: #1a0a2e;
+            --dark-card: #2a1a4a;
+            --light-bg: #f8f7ff;
+            --light-card: #ffffff;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent-1: #ff6b8b;
+            --accent-2: #4ecdc4;
+            --accent-3: #ffe66d;
+            --grid-color: rgba(106, 90, 205, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        /* ... 省略重复的公共样式 ... */
+        
+        /* 案例详情样式 */
+        .case-detail {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            border: 1px solid rgba(106, 90, 205, 0.1);
+        }
+        
+        .dark-mode .case-detail {
+            background-color: var(--dark-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .case-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .case-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(106, 90, 205, 0.2);
+        }
+        
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background-color: rgba(106, 90, 205, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .dark-mode .stat-card {
+            background-color: rgba(147, 112, 219, 0.2);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(106, 90, 205, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .dark-mode .stat-label {
+            color: var(--text-light);
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .case-preview {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .dark-mode .case-preview {
+            background-color: var(--dark-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .case-preview:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 90, 205, 0.15);
+        }
+        
+        .preview-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .preview-content {
+            padding: 1.5rem;
+        }
+        
+        .preview-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .preview-content p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .preview-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .preview-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .case-preview:hover .preview-link i {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- 网格背景 -->
+    <div class="grid-background grid-light"></div>
+    
+    <!-- 彩色点 -->
+    <div class="color-dots">
+        <div class="dot" style="width: 15px; height: 15px; background-color: var(--accent-1); top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="dot" style="width: 25px; height: 25px; background-color: var(--accent-2); top: 70%; left: 10%; animation-delay: -5s;"></div>
+        <div class="dot" style="width: 20px; height: 20px; background-color: var(--accent-3); top: 30%; left: 85%; animation-delay: -10s;"></div>
+        <div class="dot" style="width: 18px; height: 18px; background-color: var(--secondary-color); top: 85%; left: 80%; animation-delay: -15s;"></div>
+    </div>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-globe-americas"></i>
+            <h1>全球教育改革分析</h1>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="motivation.html">心理动机</a></li>
+                <li><a href="values.html">价值观</a></li>
+                <li><a href="cases.html" class="active">案例研究</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索案例研究...">
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+    
+    <!-- 主内容 -->
+    <main>
+        <div class="page-header">
+            <h1>全球教育改革案例研究</h1>
+            <div class="breadcrumb">
+                <a href="index.html">首页</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>案例研究</span>
+            </div>
+        </div>
+        
+        <div class="case-detail">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary-color);">精选全球教育改革案例</h2>
+            <p>以下是三个具有代表性的全球教育改革案例，每个案例展示了不同的改革策略、实施路径和成效。这些案例为全球教育政策制定者提供了宝贵的经验和启示。</p>
+            
+            <div class="case-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>数据更新: 2023年10月</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>覆盖地区: 全球</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i>
+                    <span>案例数量: 3个</span>
+                </div>
+            </div>
+            
+            <div class="case-stats">
+                <div class="stat-card">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">年改革历程</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">大洲覆盖</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">关键指标</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">成功率</div>
+                </div>
+            </div>
+            
+            <h3>案例研究方法</h3>
+            <p>我们的案例研究采用混合研究方法，包括定量数据分析、定性访谈、政策文件分析和实地观察。每个案例研究都从以下维度进行分析：政策背景、实施策略、关键挑战、成效评估和可迁移经验。</p>
+        </div>
+        
+        <h2 style="font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--primary-color);">案例研究总览</h2>
+        
+        <div class="case-grid">
+            <a href="finland-case.html" class="case-preview">
+                <div class="preview-image" style="background-image: linear-gradient(rgba(106, 90, 205, 0.7), rgba(147, 112, 219, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="preview-content">
+                    <h3>芬兰教育创新模式</h3>
+                    <p>芬兰通过减少标准化测试、增加教师自主权和注重学生幸福感，创建了世界领先的教育系统。</p>
+                    <div class="case-tags">
+                        <span class="tag">北欧模式</span>
+                        <span class="tag">平等教育</span>
+                        <span class="tag">教师自主权</span>
+                    </div>
+                    <div class="preview-link">查看详细案例 <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+            
+            <a href="singapore-case.html" class="case-preview">
+                <div class="preview-image" style="background-image: linear-gradient(rgba(106, 90, 205, 0.7), rgba(147, 112, 219, 0.7)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="preview-content">
+                    <h3>新加坡技能未来计划</h3>
+                    <p>新加坡通过"技能未来"计划，将教育与劳动力市场需求紧密结合，培养学生适应未来经济的技能。</p>
+                    <div class="case-tags">
+                        <span class="tag">技能培训</span>
+                        <span class="tag">终身学习</span>
+                        <span class="tag">产业对接</span>
+                    </div>
+                    <div class="preview-link">查看详细案例 <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+            
+            <a href="canada-case.html" class="case-preview">
+                <div class="preview-image" style="background-image: linear-gradient(rgba(106, 90, 205, 0.7), rgba(147, 112, 219, 0.7)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="preview-content">
+                    <h3>加拿大原住民教育融合</h3>
+                    <p>加拿大通过将原住民知识与视角融入主流课程，促进文化理解与和解，平衡传统与现代教育需求。</p>
+                    <div class="case-tags">
+                        <span class="tag">文化包容</span>
+                        <span class="tag">多元文化教育</span>
+                        <span class="tag">社会正义</span>
+                    </div>
+                    <div class="preview-link">查看详细案例 <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="case-detail">
+            <h3>案例分析框架</h3>
+            <p>我们的案例分析采用统一的框架，确保跨案例可比性：</p>
+            <ol style="line-height: 1.7; margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li><strong>背景分析</strong>: 教育改革的政治、经济、社会和文化背景</li>
+                <li><strong>政策设计</strong>: 改革目标、策略、实施路径和时间表</li>
+                <li><strong>实施过程</strong>: 关键行动者、资源配置、障碍与解决方案</li>
+                <li><strong>成效评估</strong>: 定量与定性指标、短期与长期影响</li>
+                <li><strong>经验教训</strong>: 成功因素、局限性、可迁移经验</li>
+            </ol>
+            
+            <h3>关键发现</h3>
+            <p>通过对这三个案例的深入分析，我们发现了以下全球教育改革的共同趋势：</p>
+            <ul style="line-height: 1.7; margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li>成功的教育改革都注重教师专业发展和自主权</li>
+                <li>教育公平与文化包容成为全球教育改革的核心议题</li>
+                <li>技能培养从学术导向转向能力导向</li>
+                <li>技术整合正在改变教学与评估方式</li>
+                <li>社区与家长参与是改革成功的关键因素</li>
+            </ul>
+        </div>
+    </main>
+    
+    <!-- 页脚/联系我们 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>关于我们</h3>
+                <p>全球教育改革分析网站致力于提供数据驱动的教育洞察，帮助政策制定者、教育工作者和研究人員理解全球教育趋势。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>相关页面</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="motivation.html">学生心理动机</a></li>
+                    <li><a href="values.html">价值观分析</a></li>
+                    <li><a href="cases.html">案例研究</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <p><i class="fas fa-envelope"></i> contact@global-edu-analysis.org</p>
+                <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> 教育创新中心, 国际教育街123号</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>发送消息</h3>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="电子邮件" required>
+                    <textarea rows="3" placeholder="您的消息" required></textarea>
+                    <button type="submit">发送消息</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 全球教育改革分析网站. 保留所有权利.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 切换日月模式
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const gridBackground = document.querySelector('.grid-background');
+        
+        // 检查本地存储的主题偏好
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            gridBackground.classList.remove('grid-light');
+            gridBackground.classList.add('grid-dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            
+            if (isDarkMode) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                gridBackground.classList.remove('grid-light');
+                gridBackground.classList.add('grid-dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                gridBackground.classList.remove('grid-dark');
+                gridBackground.classList.add('grid-light');
+            }
+        });
+        
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    alert(`搜索: ${searchTerm}\n\n此功能在完整版本中将显示相关结果。`);
+                    searchInput.value = '';
+                }
+            }
+        });
+        
+        // 导航菜单点击效果
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // 在移动端点击后关闭菜单
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // 联系表单提交
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('感谢您的消息！我们会尽快回复。');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
