@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生视野与世界观 - 全球教育改革</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 使用与values.html相同的样式结构，但调整颜色和图标 */
+        :root {
+            --primary-color: #4ecdc4;
+            --secondary-color: #6a5acd;
+            --accent-1: #ff6b8b;
+            --accent-2: #ffe66d;
+            --accent-3: #9370db;
+            /* 其他变量保持不变 */
+        }
+        
+        /* ... 公共样式与values.html相同 ... */
+        
+        .world-map {
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(78, 205, 196, 0.7), rgba(106, 90, 205, 0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .vision-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stage-card {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(78, 205, 196, 0.15);
+        }
+        
+        .stage-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* 其他样式与values.html保持一致 */
+    </style>
+</head>
+<body class="light-mode">
+    <!-- 网格背景 -->
+    <div class="grid-background grid-light"></div>
+    
+    <!-- 彩色点 -->
+    <div class="color-dots">
+        <div class="dot" style="width: 15px; height: 15px; background-color: var(--primary-color); top: 10%; left: 5%;"></div>
+        <div class="dot" style="width: 25px; height: 25px; background-color: var(--accent-1); top: 70%; left: 10%;"></div>
+        <div class="dot" style="width: 20px; height: 20px; background-color: var(--accent-2); top: 30%; left: 85%;"></div>
+    </div>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-eye"></i>
+            <h1>全球教育改革分析</h1>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="motivation.html">心理动机</a></li>
+                <li><a href="values.html">价值观</a></li>
+                <li><a href="vision.html" class="active">学生视野</a></li>
+                <li><a href="cases.html">案例研究</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索学生视野...">
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+    
+    <!-- 主内容 -->
+    <main>
+        <div class="page-header">
+            <h1>学生视野与世界观分析</h1>
+            <div class="breadcrumb">
+                <a href="index.html">首页</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>学生视野与世界观</span>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <div class="main-content">
+                <h2>全球化背景下的学生视野</h2>
+                <p>在全球化时代，学生的视野不再局限于本地或本国，而是扩展到全球范围。教育系统如何帮助学生发展全球视野、跨文化理解能力和国际竞争力，成为教育改革的关键议题。</p>
+                
+                <div class="world-map">
+                    <div class="map-overlay">
+                        <div>全球视野发展路径</div>
+                    </div>
+                </div>
+                
+                <h2>学生世界观发展阶段</h2>
+                <div class="vision-stages">
+                    <div class="stage-card">
+                        <div class="stage-number">1</div>
+                        <h3>本土认知阶段</h3>
+                        <p>学生主要关注本地社区和文化，世界观以自我为中心</p>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">2</div>
+                        <h3>国家认同阶段</h3>
+                        <p>学生开始理解国家概念，形成国家认同和公民意识</p>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">3</div>
+                        <h3>跨文化理解阶段</h3>
+                        <p>学生能够理解不同文化，具备基本的跨文化交流能力</p>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">4</div>
+                        <h3>全球公民阶段</h3>
+                        <p>学生具备全球视野，关注全球议题，参与全球行动</p>
+                    </div>
+                </div>
+                
+                <h2>影响学生视野的关键因素</h2>
+                <p>学生视野的发展受到多种因素影响：1) 国际交流机会；2) 多语言能力；3) 数字媒体素养；4) 跨文化课程；5) 国际教育项目。研究表明，早期接触多元文化和全球议题有助于学生形成更开放、包容的世界观。</p>
+                
+                <div class="chart-container">
+                    <h3 class="chart-title">学生全球视野发展影响因素权重</h3>
+                    <div style="height: 300px; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 80%; height: 30px; background: linear-gradient(90deg, var(--primary-color), #6bd6cf); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">国际交流 (80%)</div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 75%; height: 30px; background: linear-gradient(90deg, var(--accent-1), #ff8ba3); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">多语言教育 (75%)</div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 70%; height: 30px; background: linear-gradient(90deg, var(--accent-2), #ffed8a); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">跨文化课程 (70%)</div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 65%; height: 30px; background: linear-gradient(90deg, var(--accent-3), #a88de0); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">数字媒体素养 (65%)</div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 60%; height: 30px; background: linear-gradient(90deg, var(--secondary-color), #7d6bd4); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">国际教育项目 (60%)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>全球视野培养策略</h2>
+                <p>有效的全球视野培养策略包括：1) 整合全球议题到各学科课程；2) 发展跨文化沟通和合作技能；3) 提供国际交流和实践机会；4) 培养批判性思维和多元视角；5) 鼓励参与全球公民行动。这些策略需要学校、家庭和社区的协同努力。</p>
+            </div>
+            
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>核心概念</h3>
+                    <ul>
+                        <li>全球公民教育</li>
+                        <li>跨文化能力</li>
+                        <li>国际理解教育</li>
+                        <li>多元文化素养</li>
+                        <li>世界主义教育</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>评估工具</h3>
+                    <ul>
+                        <li>全球胜任力量表</li>
+                        <li>跨文化敏感度量表</li>
+                        <li>国际视野评估</li>
+                        <li>多元文化态度问卷</li>
+                        <li>全球议题认知测试</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>国际项目</h3>
+                    <ul>
+                        <li>国际文凭课程</li>
+                        <li>联合国教科文组织项目</li>
+                        <li>学生交流计划</li>
+                        <li>国际模拟联合国</li>
+                        <li>全球学校伙伴关系</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚/联系我们 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>关于我们</h3>
+                <p>全球教育改革分析网站致力于提供数据驱动的教育洞察，帮助政策制定者、教育工作者和研究人員理解全球教育趋势。</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>相关页面</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="motivation.html">学生心理动机</a></li>
+                    <li><a href="values.html">价值观分析</a></li>
+                    <li><a href="vision.html">学生视野</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <p><i class="fas fa-envelope"></i> contact@global-edu-analysis.org</p>
+                <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>发送消息</h3>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="电子邮件" required>
+                    <textarea rows="3" placeholder="您的消息" required></textarea>
+                    <button type="submit">发送消息</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 全球教育改革分析网站. 保留所有权利.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript代码与values.html相同
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const gridBackground = document.querySelector('.grid-background');
+        
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            gridBackground.classList.remove('grid-light');
+            gridBackground.classList.add('grid-dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            
+            if (isDarkMode) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                gridBackground.classList.remove('grid-light');
+                gridBackground.classList.add('grid-dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                gridBackground.classList.remove('grid-dark');
+                gridBackground.classList.add('grid-light');
+            }
+        });
+        
+        // 其他JavaScript代码...
+    </script>
+</body>
+</html>
