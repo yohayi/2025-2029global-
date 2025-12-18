@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生视野与世界观 - 全球教育改革</title>
+    <title>学生心理动机分析 - 全球教育改革</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4ecdc4;
-            --secondary-color: #6a5acd;
+            --primary-color: #6a5acd;
+            --secondary-color: #9370db;
             --accent-1: #ff6b8b;
-            --accent-2: #ffe66d;
-            --accent-3: #9370db;
-            --dark-bg: #1a0a2e;
-            --dark-card: #2a1a4a;
-            --light-bg: #f8f7ff;
+            --accent-2: #ffd166;
+            --accent-3: #06d6a0;
+            --dark-bg: #0f0f23;
+            --dark-card: #1a1a2e;
+            --light-bg: #f5f7ff;
             --light-card: #ffffff;
             --text-light: #ffffff;
             --text-dark: #333333;
-            --grid-color: rgba(78, 205, 196, 0.15);
+            --grid-color: rgba(106, 90, 205, 0.15);
             --transition: all 0.3s ease;
         }
         
@@ -66,10 +66,10 @@
         
         .grid-dark {
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(78, 205, 196, 0.2) 2px, transparent 2px),
-                radial-gradient(circle at 90% 90%, rgba(78, 205, 196, 0.2) 2px, transparent 2px),
-                radial-gradient(circle at 90% 10%, rgba(78, 205, 196, 0.2) 2px, transparent 2px),
-                radial-gradient(circle at 10% 90%, rgba(78, 205, 196, 0.2) 2px, transparent 2px);
+                radial-gradient(circle at 10% 10%, rgba(106, 90, 205, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 90% 90%, rgba(106, 90, 205, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 90% 10%, rgba(106, 90, 205, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 10% 90%, rgba(106, 90, 205, 0.2) 2px, transparent 2px);
             background-size: 60px 60px;
             background-position: 0 0, 30px 30px;
         }
@@ -113,33 +113,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
         
         .dark-mode header {
-            background-color: rgba(26, 10, 46, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background-color: rgba(15, 15, 35, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .logo i {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
         }
         
         .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.9rem;
+            font-weight: 800;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             background-clip: text;
@@ -154,12 +155,13 @@
         
         .search-container input {
             width: 100%;
-            padding: 0.8rem 1rem 0.8rem 3rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
             border: 1px solid #ddd;
             border-radius: 50px;
             background-color: #f9f9f9;
             font-size: 1rem;
             transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
         .dark-mode .search-container input {
@@ -170,7 +172,7 @@
         
         .search-container i {
             position: absolute;
-            left: 1rem;
+            left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--primary-color);
@@ -184,10 +186,18 @@
             cursor: pointer;
             color: var(--primary-color);
             transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(106, 90, 205, 0.1);
         }
         
         .theme-toggle:hover {
             transform: rotate(30deg);
+            background-color: rgba(106, 90, 205, 0.2);
         }
         
         /* 导航菜单 */
@@ -201,9 +211,10 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
             transition: var(--transition);
+            position: relative;
         }
         
         .dark-mode nav a {
@@ -213,6 +224,8 @@
         nav a:hover, nav a.active {
             background-color: var(--primary-color);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 90, 205, 0.3);
         }
         
         .mobile-menu-btn {
@@ -222,36 +235,58 @@
             font-size: 1.5rem;
             color: var(--primary-color);
             cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(106, 90, 205, 0.1);
+            align-items: center;
+            justify-content: center;
         }
         
         /* 页面内容 */
         main {
-            padding: 2rem 5%;
+            padding: 3rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .page-header {
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             margin-bottom: 3rem;
-            border-bottom: 1px solid rgba(78, 205, 196, 0.2);
+            border-bottom: 1px solid rgba(106, 90, 205, 0.2);
+            text-align: center;
         }
         
         .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-1));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            line-height: 1.2;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .dark-mode .page-header p {
+            color: #aaa;
         }
         
         .page-header .breadcrumb {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             color: #666;
             font-size: 0.9rem;
+            margin-top: 1.5rem;
         }
         
         .dark-mode .page-header .breadcrumb {
@@ -261,6 +296,7 @@
         .breadcrumb a {
             color: var(--primary-color);
             text-decoration: none;
+            font-weight: 600;
         }
         
         .breadcrumb i {
@@ -283,139 +319,160 @@
         
         /* 主要内容 */
         .main-content h2 {
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem;
             color: var(--primary-color);
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(78, 205, 196, 0.2);
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid rgba(106, 90, 205, 0.2);
         }
         
         .main-content h3 {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 0.8rem;
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
             color: var(--secondary-color);
         }
         
         .main-content p {
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
         
         /* 扩展部分样式 */
         .expansion-section {
             background-color: var(--light-card);
-            border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 3rem 0;
-            border-left: 5px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 4rem 0;
+            border-left: 6px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .expansion-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
         
         .dark-mode .expansion-section {
             background-color: var(--dark-card);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
         
         .expansion-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
         }
         
         .expansion-section h3 {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 1rem;
+            font-size: 1.7rem;
+            margin: 2rem 0 1.2rem;
             color: var(--secondary-color);
         }
         
-        /* 第一部分：全球化背景下的学生视野 */
-        .world-map {
+        /* 第一部分：心理动机理论 */
+        .theory-visual {
             height: 400px;
-            background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: 15px;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-1));
+            border-radius: 20px;
+            margin: 2.5rem 0;
             position: relative;
             overflow: hidden;
-        }
-        
-        .map-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(78, 205, 196, 0.7), rgba(106, 90, 205, 0.7));
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+        }
+        
+        .theory-visual-content {
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             text-align: center;
             padding: 2rem;
+            z-index: 2;
         }
         
-        .map-overlay p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            max-width: 600px;
+        .theory-visual-content p {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
             font-weight: normal;
+            max-width: 700px;
         }
         
-        .feature-grid {
+        .theory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
         
-        .feature-item {
-            background-color: rgba(78, 205, 196, 0.1);
-            border-radius: 10px;
-            padding: 1.5rem;
+        .theory-item {
+            background-color: rgba(106, 90, 205, 0.08);
+            border-radius: 15px;
+            padding: 2rem;
             transition: var(--transition);
+            border: 1px solid rgba(106, 90, 205, 0.1);
         }
         
-        .dark-mode .feature-item {
-            background-color: rgba(78, 205, 196, 0.2);
+        .dark-mode .theory-item {
+            background-color: rgba(106, 90, 205, 0.15);
         }
         
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(78, 205, 196, 0.15);
+        .theory-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(106, 90, 205, 0.15);
         }
         
-        .feature-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
+        .theory-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
         }
         
+        .theory-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+        
+        /* 数据展示 */
         .data-points {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            gap: 2rem;
+            margin: 2.5rem 0;
             justify-content: center;
         }
         
         .data-point {
             text-align: center;
-            min-width: 150px;
+            min-width: 180px;
+            padding: 1.5rem;
+            background-color: rgba(106, 90, 205, 0.08);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+        
+        .data-point:hover {
+            transform: scale(1.05);
+            background-color: rgba(106, 90, 205, 0.12);
+        }
+        
+        .dark-mode .data-point {
+            background-color: rgba(106, 90, 205, 0.15);
         }
         
         .data-value {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-size: 3rem;
+            font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
+            line-height: 1;
         }
         
         .data-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-dark);
             font-weight: 600;
         }
@@ -424,241 +481,104 @@
             color: var(--text-light);
         }
         
-        /* 第二部分：学生世界观发展阶段 */
-        .stage-detail-container {
-            display: flex;
-            flex-direction: column;
+        /* 第二部分：动机类型分析 */
+        .motivation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
         
-        .stage-tabs {
+        .motivation-card {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            padding: 2.2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .dark-mode .motivation-card {
+            background-color: var(--dark-card);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .motivation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(106, 90, 205, 0.2);
+        }
+        
+        .motivation-header {
             display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+            align-items: center;
             margin-bottom: 1.5rem;
         }
         
-        .stage-tab {
-            padding: 0.8rem 1.5rem;
-            background-color: rgba(78, 205, 196, 0.1);
-            border-radius: 30px;
-            border: none;
-            font-weight: 600;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .dark-mode .stage-tab {
-            background-color: rgba(78, 205, 196, 0.2);
-            color: var(--text-light);
-        }
-        
-        .stage-tab:hover, .stage-tab.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .stage-detail-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .stage-detail-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .stage-detail-card {
-            background-color: rgba(78, 205, 196, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .dark-mode .stage-detail-card {
-            background-color: rgba(78, 205, 196, 0.1);
-        }
-        
-        .stage-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .stage-info-item {
-            background-color: var(--light-card);
-            border-radius: 10px;
-            padding: 1.2rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        
-        .dark-mode .stage-info-item {
-            background-color: var(--dark-card);
-        }
-        
-        .stage-info-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        /* 雷达图样式 */
-        .radar-container {
-            height: 350px;
-            width: 350px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .radar-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+        .motivation-icon {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: 
-                radial-gradient(circle at center, transparent 0%, transparent 80%, rgba(78, 205, 196, 0.1) 80%, rgba(78, 205, 196, 0.1) 100%),
-                radial-gradient(circle at center, transparent 0%, transparent 60%, rgba(78, 205, 196, 0.1) 60%, rgba(78, 205, 196, 0.1) 100%),
-                radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(78, 205, 196, 0.1) 40%, rgba(78, 205, 196, 0.1) 100%),
-                radial-gradient(circle at center, transparent 0%, transparent 20%, rgba(78, 205, 196, 0.1) 20%, rgba(78, 205, 196, 0.1) 100%);
-        }
-        
-        .radar-axis {
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background-color: rgba(78, 205, 196, 0.3);
-            top: 0;
-            left: 50%;
-            transform-origin: bottom center;
-        }
-        
-        .radar-label {
-            position: absolute;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transform: translate(-50%, -50%);
-        }
-        
-        .dark-mode .radar-label {
-            color: var(--text-light);
-        }
-        
-        .radar-polygon {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%);
-            background-color: rgba(255, 107, 139, 0.3);
-        }
-        
-        /* 第三部分：影响学生视野的关键因素 */
-        .factor-analysis-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .factor-card {
-            background-color: var(--light-card);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border-top: 5px solid var(--primary-color);
-        }
-        
-        .dark-mode .factor-card {
-            background-color: var(--dark-card);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .factor-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(78, 205, 196, 0.15);
-        }
-        
-        .factor-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .factor-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        .factor-details {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(78, 205, 196, 0.2);
-        }
-        
-        .factor-details h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: var(--secondary-color);
-        }
-        
-        .factor-details ul {
-            padding-left: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .factor-details li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .factor-impact {
+            background-color: rgba(106, 90, 205, 0.1);
             display: flex;
             align-items: center;
-            margin-top: 1rem;
-            font-weight: 600;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-right: 1.2rem;
+        }
+        
+        .motivation-header h4 {
+            font-size: 1.5rem;
             color: var(--primary-color);
         }
         
-        .factor-impact-bar {
-            height: 8px;
-            background-color: rgba(78, 205, 196, 0.2);
-            border-radius: 4px;
-            flex-grow: 1;
-            margin: 0 1rem;
-            overflow: hidden;
+        .motivation-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(106, 90, 205, 0.1);
         }
         
-        .factor-impact-fill {
-            height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 4px;
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .dark-mode .stat-label {
+            color: #aaa;
         }
         
         /* 图表容器 */
         .chart-container {
             background-color: var(--light-card);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 2rem 0;
-            border: 1px solid rgba(78, 205, 196, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+            border: 1px solid rgba(106, 90, 205, 0.1);
         }
         
         .dark-mode .chart-container {
             background-color: var(--dark-card);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
         
         .chart-title {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
             text-align: center;
         }
@@ -677,26 +597,26 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background-color: var(--primary-color);
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-1));
             border-radius: 2px;
         }
         
         .timeline-item {
             position: relative;
             margin-bottom: 2.5rem;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2.3rem;
+            left: -2.5rem;
             top: 0;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             background-color: var(--primary-color);
             border-radius: 50%;
-            border: 3px solid white;
+            border: 4px solid white;
             box-shadow: 0 0 0 3px var(--primary-color);
         }
         
@@ -705,97 +625,44 @@
         }
         
         .timeline-year {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        /* 第四部分：全球视野培养策略 */
-        .strategy-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .strategy-card {
-            background-color: var(--light-card);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .dark-mode .strategy-card {
-            background-color: var(--dark-card);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .strategy-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(78, 205, 196, 0.15);
-        }
-        
-        .strategy-number {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 3rem;
-            font-weight: bold;
-            color: rgba(78, 205, 196, 0.1);
-        }
-        
-        .dark-mode .strategy-number {
-            color: rgba(78, 205, 196, 0.2);
-        }
-        
-        .strategy-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        
-        .strategy-implementation {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(78, 205, 196, 0.2);
-        }
-        
-        .strategy-implementation h4 {
-            font-size: 1.1rem;
             margin-bottom: 0.8rem;
-            color: var(--secondary-color);
         }
         
         /* 侧边栏 */
         .sidebar {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .sidebar-card {
             background-color: var(--light-card);
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(78, 205, 196, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(106, 90, 205, 0.1);
+            transition: var(--transition);
+        }
+        
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(106, 90, 205, 0.15);
         }
         
         .dark-mode .sidebar-card {
             background-color: var(--dark-card);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
         }
         
         .sidebar-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(78, 205, 196, 0.2);
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid rgba(106, 90, 205, 0.2);
         }
         
         .sidebar-card ul {
@@ -803,53 +670,121 @@
         }
         
         .sidebar-card ul li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
             position: relative;
+            line-height: 1.6;
         }
         
         .sidebar-card ul li:before {
-            content: "•";
+            content: "›";
             color: var(--primary-color);
             font-size: 1.5rem;
             position: absolute;
             left: 0;
-            top: -5px;
+            top: -2px;
         }
         
         .sidebar-card a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
-            display: block;
-            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            margin-top: 1.2rem;
             transition: var(--transition);
+            padding: 0.5rem 0;
         }
         
         .sidebar-card a:hover {
-            padding-left: 5px;
+            padding-left: 8px;
+        }
+        
+        .sidebar-card a i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .sidebar-card a:hover i {
+            transform: translateX(5px);
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(106, 90, 205, 0.08);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        
+        .dark-mode .project-link {
+            background-color: rgba(106, 90, 205, 0.15);
+            color: var(--text-light);
+        }
+        
+        .project-link:hover {
+            background-color: rgba(106, 90, 205, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .project-info h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .project-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        .dark-mode .project-info p {
+            color: #aaa;
         }
         
         /* 页脚 */
         footer {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 3rem 5% 1.5rem;
-            margin-top: 4rem;
+            padding: 4rem 5% 2rem;
+            margin-top: 6rem;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
         
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
         }
         
         .footer-column h3::after {
@@ -857,8 +792,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 2px;
+            width: 60px;
+            height: 3px;
             background-color: var(--accent-2);
         }
         
@@ -867,11 +802,19 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li i {
+            margin-right: 0.8rem;
+            color: var(--accent-2);
+            width: 20px;
         }
         
         .footer-column a {
-            color: #ddd;
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             transition: var(--transition);
         }
@@ -881,15 +824,58 @@
             padding-left: 5px;
         }
         
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--accent-2);
+            margin-right: 1rem;
+            width: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-2);
+            transform: translateY(-5px);
+        }
+        
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
             border: none;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.15);
             color: white;
+            font-size: 1rem;
         }
         
         .contact-form input::placeholder,
@@ -901,44 +887,57 @@
             background-color: var(--accent-2);
             color: white;
             border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
+            font-size: 1rem;
+            width: 100%;
         }
         
         .contact-form button:hover {
-            background-color: #f2d95c;
+            background-color: #ffc145;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 209, 102, 0.3);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright a {
+            color: var(--accent-2);
+            text-decoration: none;
         }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
             .mobile-menu-btn {
-                display: block;
+                display: flex;
             }
             
             nav ul {
                 position: fixed;
-                top: 80px;
+                top: 90px;
                 left: 0;
                 width: 100%;
                 background-color: var(--light-card);
                 flex-direction: column;
                 padding: 2rem;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 transform: translateY(-100%);
                 opacity: 0;
                 transition: var(--transition);
                 z-index: 99;
+                border-radius: 0 0 20px 20px;
             }
             
             .dark-mode nav ul {
@@ -951,61 +950,90 @@
             }
             
             .search-container {
-                width: 200px;
+                display: none;
             }
             
             .page-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .expansion-section {
+                padding: 2rem;
+            }
+            
+            .theory-visual {
+                height: 300px;
+            }
+            
+            .theory-visual-content {
                 font-size: 2rem;
+            }
+            
+            .theory-visual-content p {
+                font-size: 1.1rem;
+            }
+            
+            .data-points {
+                gap: 1.5rem;
+            }
+            
+            .data-point {
+                min-width: 140px;
+                padding: 1.2rem;
+            }
+            
+            .data-value {
+                font-size: 2.5rem;
+            }
+            
+            .copyright {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
             }
             
             .expansion-section {
                 padding: 1.5rem;
             }
             
-            .world-map {
-                height: 300px;
-            }
-            
-            .map-overlay {
-                font-size: 1.5rem;
-            }
-            
-            .map-overlay p {
-                font-size: 1rem;
-            }
-            
-            .radar-container {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .factor-analysis-container,
-            .strategy-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .search-container {
-                width: 150px;
-            }
-            
-            .page-header h1 {
+            .expansion-section h2 {
                 font-size: 1.8rem;
             }
             
-            .stage-tabs {
-                justify-content: center;
+            .theory-grid, .motivation-types {
+                grid-template-columns: 1fr;
             }
             
-            .stage-tab {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
+            .theory-visual {
+                height: 250px;
+            }
+            
+            .theory-visual-content {
+                font-size: 1.8rem;
+            }
+            
+            .theory-visual-content p {
+                font-size: 1rem;
             }
             
             .data-points {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .data-point {
+                width: 100%;
+                max-width: 300px;
             }
             
             .footer-content {
@@ -1020,16 +1048,17 @@
     
     <!-- 彩色点 -->
     <div class="color-dots">
-        <div class="dot" style="width: 15px; height: 15px; background-color: var(--primary-color); top: 10%; left: 5%; animation-delay: 0s;"></div>
-        <div class="dot" style="width: 25px; height: 25px; background-color: var(--accent-1); top: 70%; left: 10%; animation-delay: -5s;"></div>
-        <div class="dot" style="width: 20px; height: 20px; background-color: var(--accent-2); top: 30%; left: 85%; animation-delay: -10s;"></div>
-        <div class="dot" style="width: 18px; height: 18px; background-color: var(--secondary-color); top: 85%; left: 80%; animation-delay: -15s;"></div>
+        <div class="dot" style="width: 20px; height: 20px; background-color: var(--primary-color); top: 15%; left: 8%; animation-delay: 0s;"></div>
+        <div class="dot" style="width: 30px; height: 30px; background-color: var(--accent-1); top: 75%; left: 15%; animation-delay: -5s;"></div>
+        <div class="dot" style="width: 25px; height: 25px; background-color: var(--accent-2); top: 35%; left: 90%; animation-delay: -10s;"></div>
+        <div class="dot" style="width: 22px; height: 22px; background-color: var(--accent-3); top: 85%; left: 85%; animation-delay: -15s;"></div>
+        <div class="dot" style="width: 18px; height: 18px; background-color: var(--secondary-color); top: 60%; left: 5%; animation-delay: -8s;"></div>
     </div>
     
     <!-- 头部 -->
     <header>
         <div class="logo">
-            <i class="fas fa-eye"></i>
+            <i class="fas fa-brain"></i>
             <h1>全球教育改革分析</h1>
         </div>
         
@@ -1040,9 +1069,9 @@
         <nav>
             <ul id="navMenu">
                 <li><a href="index.html">首页</a></li>
-                <li><a href="motivation.html">心理动机</a></li>
+                <li><a href="motivation.html" class="active">心理动机</a></li>
                 <li><a href="values.html">价值观</a></li>
-                <li><a href="vision.html" class="active">学生视野</a></li>
+                <li><a href="vision.html">学生视野</a></li>
                 <li><a href="cases.html">案例研究</a></li>
                 <li><a href="#contact">联系我们</a></li>
             </ul>
@@ -1050,7 +1079,7 @@
         
         <div class="search-container">
             <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="搜索学生视野...">
+            <input type="text" id="searchInput" placeholder="搜索心理动机相关内容...">
         </div>
         
         <button class="theme-toggle" id="themeToggle">
@@ -1061,982 +1090,434 @@
     <!-- 主内容 -->
     <main>
         <div class="page-header">
-            <h1>学生视野与世界观分析</h1>
+            <h1>学生心理动机分析</h1>
+            <p>深入探索学生在全球化教育环境中的心理动机结构，分析内在驱动因素与学习成效的关系，为教育创新提供心理学依据。</p>
             <div class="breadcrumb">
                 <a href="index.html">首页</a>
                 <i class="fas fa-chevron-right"></i>
-                <span>学生视野与世界观</span>
+                <span>学生心理动机</span>
             </div>
         </div>
         
         <div class="content-container">
             <div class="main-content">
-                <!-- 第一部分：全球化背景下的学生视野 -->
+                <!-- 第一部分：心理动机理论 -->
                 <div class="expansion-section">
-                    <h2>全球化背景下的学生视野：多维视角与变革趋势</h2>
+                    <h2>心理动机理论：学习驱动力的心理学基础</h2>
                     
-                    <p>在21世纪的全球化浪潮中，学生的视野已经从传统的地方性认知扩展到全球性认知。教育系统面临的核心挑战是如何帮助学生构建既具有全球广度又具有文化深度的世界观，以应对日益复杂多变的国际环境。</p>
+                    <p>学生的学习动机是影响教育成效的核心心理因素。在全球化教育背景下，理解学生的心理动机结构对于设计有效的教育干预措施至关重要。动机理论的发展从行为主义到认知主义，再到社会文化视角，为我们理解学生的学习驱动力提供了多元框架。</p>
                     
-                    <div class="world-map">
-                        <div class="map-overlay">
-                            <div>全球视野发展路径</div>
-                            <p>从本土认知到全球公民的演进过程，反映了学生世界观的形成与扩展</p>
+                    <div class="theory-visual">
+                        <div class="theory-visual-content">
+                            <div>动机结构的多维模型</div>
+                            <p>内在动机与外在动机的动态平衡，决定了学生的学习投入和持久性</p>
                         </div>
                     </div>
                     
-                    <h3>全球化对学生视野的多维度影响</h3>
+                    <h3>主要动机理论框架</h3>
                     
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <h4>认知维度扩展</h4>
-                            <p>全球化促使学生的认知框架从单一文化视角向多元文化视角转变，学生开始理解不同文化背景下的思维方式和价值观念，形成更加包容和开放的认知结构。</p>
+                    <div class="theory-grid">
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h4>自我决定理论</h4>
+                            <p>强调人类三种基本心理需求：自主性、胜任力和归属感。满足这些需求能促进内在动机的形成和维持，提高学习质量和持久性。</p>
                         </div>
                         
-                        <div class="feature-item">
-                            <h4>情感维度深化</h4>
-                            <p>学生通过接触全球议题和文化多样性，发展出对全球问题的共情能力，形成跨国界的情感连接，增强了作为全球公民的责任感和认同感。</p>
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4>目标定向理论</h4>
+                            <p>区分掌握目标（学习为导向）和表现目标（成绩为导向）。掌握目标导向的学生更倾向于面对挑战、坚持学习并采用深层学习策略。</p>
                         </div>
                         
-                        <div class="feature-item">
-                            <h4>技能维度丰富</h4>
-                            <p>全球视野的培养要求学生掌握跨文化沟通、国际协作、多语言表达等新型技能，这些技能在传统教育体系中往往被忽视，但在全球化时代变得日益重要。</p>
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>期望价值理论</h4>
+                            <p>学生的学习动机取决于对成功可能性的期望和对任务价值的认知。高期望与高价值认知共同促进学习投入。</p>
                         </div>
                         
-                        <div class="feature-item">
-                            <h4>行动维度激活</h4>
-                            <p>具备全球视野的学生更有可能参与国际志愿服务、全球议题倡导和跨国合作项目，将全球意识转化为实际行动，为全球问题的解决贡献力量。</p>
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>社会认知理论</h4>
+                            <p>强调观察学习、自我效能感和自我调节在学习动机中的作用。高自我效能感的学生更有可能设定挑战性目标并坚持努力。</p>
                         </div>
                     </div>
                     
-                    <h3>全球视野发展的关键数据</h3>
+                    <h3>全球化背景下学生动机的关键数据</h3>
                     
                     <div class="data-points">
                         <div class="data-point">
-                            <div class="data-value">73%</div>
-                            <div class="data-label">学生认为国际交流<br>扩大了他们的视野</div>
-                        </div>
-                        
-                        <div class="data-point">
-                            <div class="data-value">58%</div>
-                            <div class="data-label">学生能识别至少<br>三个全球性议题</div>
+                            <div class="data-value">68%</div>
+                            <div class="data-label">学生认为学习自主性<br>是最大学习动力</div>
                         </div>
                         
                         <div class="data-point">
                             <div class="data-value">42%</div>
-                            <div class="data-label">学生参与过<br>跨国合作项目</div>
+                            <div class="data-label">学生缺乏持续学习的<br>内在驱动力</div>
                         </div>
                         
                         <div class="data-point">
-                            <div class="data-value">67%</div>
-                            <div class="data-label">学生认为学校课程<br>应包含更多全球议题</div>
+                            <div class="data-value">57%</div>
+                            <div class="data-label">学生认为国际视野<br>增强学习动机</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">74%</div>
+                            <div class="data-label">学生表示教师支持<br>对学习动机至关重要</div>
                         </div>
                     </div>
                     
-                    <h3>全球视野发展的阶段性特征</h3>
+                    <h3>动机发展的阶段性特征</h3>
                     
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-year">1990年代</div>
-                            <p><strong>媒体接触为主</strong>：学生主要通过电视、报纸等传统媒体了解外部世界，信息渠道有限且单向。</p>
+                            <div class="timeline-year">小学阶段 (6-12岁)</div>
+                            <p><strong>外在动机主导</strong>：动机主要来自外部奖励和成人认可，逐渐发展任务兴趣和好奇心驱动。</p>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-year">2000年代</div>
-                            <p><strong>互联网兴起</strong>：互联网的普及使学生能够自主获取全球信息，但信息质量和筛选能力成为新挑战。</p>
+                            <div class="timeline-year">初中阶段 (12-15岁)</div>
+                            <p><strong>动机分化期</strong>：内在动机与外在动机开始分化，同伴影响增强，自我效能感成为重要影响因素。</p>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-year">2010年代</div>
-                            <p><strong>社交媒体时代</strong>：社交媒体成为学生了解世界的主要渠道，促进了全球同龄人之间的直接交流，但也带来信息茧房效应。</p>
+                            <div class="timeline-year">高中阶段 (15-18岁)</div>
+                            <p><strong>目标整合期</strong>：学习动机与未来目标连接，职业导向动机增强，自主性需求显著提高。</p>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-year">2020年代</div>
-                            <p><strong>混合学习时代</strong>：在线国际课程、虚拟交流项目、混合式学习模式成为全球视野培养的新途径，技术赋能个性化全球学习。</p>
+                            <div class="timeline-year">大学阶段 (18岁以上)</div>
+                            <p><strong>专业动机形成</strong>：学习动机与专业认同、职业发展紧密相关，内在动机成为持续学习的主要驱动力。</p>
                         </div>
-                    </div>
-                    
-                    <h3>区域差异与全球视野发展</h3>
-                    
-                    <div class="chart-container">
-                        <h3 class="chart-title">不同地区学生全球视野发展水平比较</h3>
-                        <div style="height: 300px; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
-                            <div style="display: flex; align-items: center;">
-                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">北欧地区</div>
-                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
-                                    <div style="width: 88%; height: 100%; background: linear-gradient(90deg, var(--primary-color), #6bd6cf); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">88%</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center;">
-                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">东亚地区</div>
-                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
-                                    <div style="width: 72%; height: 100%; background: linear-gradient(90deg, var(--accent-1), #ff8ba3); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">72%</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center;">
-                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">北美地区</div>
-                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
-                                    <div style="width: 78%; height: 100%; background: linear-gradient(90deg, var(--accent-2), #ffed8a); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">78%</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center;">
-                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">非洲地区</div>
-                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
-                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--accent-3), #a88de0); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">65%</div>
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center;">
-                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">拉美地区</div>
-                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
-                                    <div style="width: 70%; height: 100%; background: linear-gradient(90deg, var(--secondary-color), #7d6bd4); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">70%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>面临的挑战与未来趋势</h3>
-                    
-                    <p>在全球视野培养过程中，教育系统面临多重挑战：1) 数字鸿沟导致的教育资源不平等；2) 文化霸权与本土价值的平衡；3) 全球议题的复杂性与认知负荷；4) 技术依赖与真实人际交往的平衡。未来全球视野教育将呈现以下趋势：更加注重批判性全球公民教育、技术赋能个性化全球学习、跨文化能力的深度培养、全球议题的跨学科整合。</p>
-                    
-                    <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">核心观点</h4>
-                        <p>全球化背景下的学生视野培养不仅是知识扩展的过程，更是认知重构、情感深化、技能发展和行动激活的综合性教育过程。成功的全球视野教育需要整合课程、教学、评估和校园文化的系统变革，同时尊重学生的文化背景和发展阶段，实现全球化与本土化的有机平衡。</p>
                     </div>
                 </div>
                 
-                <!-- 第二部分：学生世界观发展阶段 -->
+                <!-- 第二部分：动机类型分析 -->
                 <div class="expansion-section">
-                    <h2>学生世界观发展：阶段模型与教育干预策略</h2>
+                    <h2>学生动机类型分析：内在与外在动机的交互影响</h2>
                     
-                    <p>学生世界观的形成是一个渐进、多维的发展过程，受到认知发展、社会文化环境和教育经历的共同影响。基于皮亚杰的认知发展理论和科尔伯格的道德发展阶段理论，结合当代全球教育研究，我们提出了学生世界观发展的四阶段模型。</p>
+                    <p>学生的学习动机不是单一维度的，而是由多种动机类型组成的复杂系统。理解这些动机类型的相互作用对于设计有效的教育策略至关重要。研究表明，内在动机与高质量学习成果密切相关，而外在动机在某些情境下也能促进学习。</p>
                     
-                    <div class="stage-tabs">
-                        <button class="stage-tab active" data-stage="1">阶段一：本土认知</button>
-                        <button class="stage-tab" data-stage="2">阶段二：国家认同</button>
-                        <button class="stage-tab" data-stage="3">阶段三：跨文化理解</button>
-                        <button class="stage-tab" data-stage="4">阶段四：全球公民</button>
-                    </div>
-                    
-                    <div class="stage-detail-container">
-                        <!-- 阶段一详情 -->
-                        <div id="stage-1-detail" class="stage-detail-content active">
-                            <div class="stage-detail-card">
-                                <h3>本土认知阶段 (6-10岁)</h3>
-                                <p>这个阶段的学生主要关注家庭、学校和本地社区，世界观以自我和直接环境为中心，对外部世界的认知有限且具体。认知发展处于具体运算阶段，能够理解具体事物和直接经验。</p>
-                                
-                                <div class="stage-info-grid">
-                                    <div class="stage-info-item">
-                                        <h4>认知特征</h4>
-                                        <p>自我中心思维、具体认知、线性因果理解、有限的抽象思维能力</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>社会认知范围</h4>
-                                        <p>家庭→学校→本地社区，半径通常不超过10公里</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>典型年龄</h4>
-                                        <p>6-10岁（小学低年级）</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>文化理解水平</h4>
-                                        <p>能够识别本地文化符号，对文化差异的理解较为表面</p>
-                                    </div>
+                    <div class="motivation-types">
+                        <!-- 内在动机 -->
+                        <div class="motivation-card">
+                            <div class="motivation-header">
+                                <div class="motivation-icon">
+                                    <i class="fas fa-heart"></i>
                                 </div>
-                                
-                                <h4>发展阶段雷达图</h4>
-                                <div class="radar-container">
-                                    <div class="radar-grid"></div>
-                                    <div class="radar-polygon" style="clip-path: polygon(50% 10%, 60% 30%, 70% 50%, 60% 70%, 50% 90%, 40% 70%, 30% 50%, 40% 30%); background-color: rgba(78, 205, 196, 0.3);"></div>
-                                    
-                                    <!-- 雷达图标签 -->
-                                    <div class="radar-label" style="top: 5%; left: 50%;">自我认知</div>
-                                    <div class="radar-label" style="top: 30%; left: 80%;">家庭认同</div>
-                                    <div class="radar-label" style="top: 70%; left: 90%;">本地认知</div>
-                                    <div class="radar-label" style="top: 95%; left: 50%;">文化理解</div>
-                                    <div class="radar-label" style="top: 70%; left: 10%;">抽象思维</div>
-                                    <div class="radar-label" style="top: 30%; left: 20%;">全球意识</div>
-                                </div>
-                                
-                                <h4>教育干预策略</h4>
-                                <ul>
-                                    <li><strong>地图与地理教育</strong>：从教室、学校地图开始，逐步扩展到社区地图</li>
-                                    <li><strong>文化多样性启蒙</strong>：通过节日、食物、服饰等具体元素介绍不同文化</li>
-                                    <li><strong>同理心培养</strong>：通过角色扮演等活动理解他人的感受和观点</li>
-                                    <li><strong>环境教育</strong>：建立与自然环境的连接，培养生态意识</li>
-                                </ul>
-                                
-                                <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-                                    <h4>案例：芬兰小学的"我的社区"项目</h4>
-                                    <p>芬兰小学低年级学生通过"我的社区"项目，绘制家庭到学校的路线图，采访社区工作者，了解本地历史和文化。项目结束时，学生能够描述社区的基本特征和功能，并展示对不同职业的理解和尊重。</p>
-                                </div>
+                                <h4>内在动机</h4>
                             </div>
-                        </div>
-                        
-                        <!-- 阶段二详情 -->
-                        <div id="stage-2-detail" class="stage-detail-content">
-                            <div class="stage-detail-card">
-                                <h3>国家认同阶段 (11-14岁)</h3>
-                                <p>这个阶段的学生开始理解国家概念和历史，形成初步的国家认同和公民意识，对本国文化和社会制度有基本认知。认知发展进入形式运算初期，能够进行简单的抽象思维和假设推理。</p>
-                                
-                                <div class="stage-info-grid">
-                                    <div class="stage-info-item">
-                                        <h4>认知特征</h4>
-                                        <p>形式运算初期、假设推理能力、社会比较思维、群体认同形成</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>社会认知范围</h4>
-                                        <p>本地社区→城市/地区→国家，开始形成国家概念框架</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>典型年龄</h4>
-                                        <p>11-14岁（小学高年级至初中）</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>文化理解水平</h4>
-                                        <p>理解本国文化的基本特征和历史渊源，对文化差异有初步认识</p>
-                                    </div>
-                                </div>
-                                
-                                <h4>发展阶段雷达图</h4>
-                                <div class="radar-container">
-                                    <div class="radar-grid"></div>
-                                    <div class="radar-polygon" style="clip-path: polygon(50% 15%, 65% 35%, 75% 60%, 65% 80%, 50% 95%, 35% 80%, 25% 60%, 35% 35%); background-color: rgba(255, 107, 139, 0.3);"></div>
-                                    
-                                    <!-- 雷达图标签 -->
-                                    <div class="radar-label" style="top: 5%; left: 50%;">自我认知</div>
-                                    <div class="radar-label" style="top: 30%; left: 80%;">国家认同</div>
-                                    <div class="radar-label" style="top: 70%; left: 90%;">历史理解</div>
-                                    <div class="radar-label" style="top: 95%; left: 50%;">文化比较</div>
-                                    <div class="radar-label" style="top: 70%; left: 10%;">抽象思维</div>
-                                    <div class="radar-label" style="top: 30%; left: 20%;">全球意识</div>
-                                </div>
-                                
-                                <h4>教育干预策略</h4>
-                                <ul>
-                                    <li><strong>国家历史与地理教育</strong>：系统学习本国历史、地理和政治制度</li>
-                                    <li><strong>公民教育</strong>：了解公民权利与义务，参与模拟民主活动</li>
-                                    <li><strong>跨文化比较</strong>：通过对比学习了解不同国家的文化特点</li>
-                                    <li><strong>媒体素养教育</strong>：培养批判性媒体消费能力，识别国家叙事中的偏见</li>
-                                </ul>
-                                
-                                <div style="background-color: rgba(255, 107, 139, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-                                    <h4>案例：新加坡中学的"国家建设"课程</h4>
-                                    <p>新加坡中学通过"国家建设"课程，让学生深入了解新加坡建国历史、多元文化社会和经济奇迹。学生通过项目式学习，研究国家发展策略，并参与社区服务，将国家认同转化为公民行动。</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 阶段三详情 -->
-                        <div id="stage-3-detail" class="stage-detail-content">
-                            <div class="stage-detail-card">
-                                <h3>跨文化理解阶段 (15-18岁)</h3>
-                                <p>这个阶段的学生能够理解文化多样性，具备基本的跨文化交流能力，开始关注国际事务和全球性问题。认知发展进入形式运算成熟期，能够进行复杂的抽象思维和系统性分析。</p>
-                                
-                                <div class="stage-info-grid">
-                                    <div class="stage-info-item">
-                                        <h4>认知特征</h4>
-                                        <p>形式运算成熟、系统性思维、多元视角、批判性反思</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>社会认知范围</h4>
-                                        <p>国家→区域→全球，形成初步的全球地理和政治概念框架</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>典型年龄</h4>
-                                        <p>15-18岁（高中阶段）</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>文化理解水平</h4>
-                                        <p>深入理解文化差异的根源，能够进行文化比较和反思</p>
-                                    </div>
-                                </div>
-                                
-                                <h4>发展阶段雷达图</h4>
-                                <div class="radar-container">
-                                    <div class="radar-grid"></div>
-                                    <div class="radar-polygon" style="clip-path: polygon(50% 20%, 70% 40%, 85% 65%, 70% 85%, 50% 95%, 30% 85%, 15% 65%, 30% 40%); background-color: rgba(255, 230, 109, 0.3);"></div>
-                                    
-                                    <!-- 雷达图标签 -->
-                                    <div class="radar-label" style="top: 5%; left: 50%;">自我认知</div>
-                                    <div class="radar-label" style="top: 30%; left: 80%;">跨文化能力</div>
-                                    <div class="radar-label" style="top: 70%; left: 90%;">全球议题理解</div>
-                                    <div class="radar-label" style="top: 95%; left: 50%;">批判性思维</div>
-                                    <div class="radar-label" style="top: 70%; left: 10%;">多元视角</div>
-                                    <div class="radar-label" style="top: 30%; left: 20%;">全球责任感</div>
-                                </div>
-                                
-                                <h4>教育干预策略</h4>
-                                <ul>
-                                    <li><strong>国际课程整合</strong>：将全球议题融入各学科教学</li>
-                                    <li><strong>跨文化沟通训练</strong>：通过语言学习、文化交流项目提升跨文化能力</li>
-                                    <li><strong>全球议题研究</strong>：引导学生研究气候变化、贫困、移民等全球性问题</li>
-                                    <li><strong>国际交流项目</strong>：提供学生交换、国际夏令营等跨文化体验机会</li>
-                                </ul>
-                                
-                                <div style="background-color: rgba(255, 230, 109, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-                                    <h4>案例：国际文凭课程(IB)的跨文化理解</h4>
-                                    <p>IB课程通过知识论(TOK)、创造行动服务(CAS)和跨学科学习，培养学生跨文化理解能力。学生需要完成比较文化研究项目，分析不同文化背景下的知识建构方式，并参与国际社区服务项目。</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 阶段四详情 -->
-                        <div id="stage-4-detail" class="stage-detail-content">
-                            <div class="stage-detail-card">
-                                <h3>全球公民阶段 (18岁以上)</h3>
-                                <p>这个阶段的学生具备全球视野和责任感，关注全球议题并参与相关行动，形成复杂多元的世界观和价值观。认知发展达到后形式运算水平，能够处理矛盾、整合多元视角并进行辩证思考。</p>
-                                
-                                <div class="stage-info-grid">
-                                    <div class="stage-info-item">
-                                        <h4>认知特征</h4>
-                                        <p>后形式运算思维、辩证思考、系统整合、价值观反思</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>社会认知范围</h4>
-                                        <p>全球互联视角，理解全球系统的复杂性和相互依存性</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>典型年龄</h4>
-                                        <p>18岁以上（大学及成人阶段）</p>
-                                    </div>
-                                    <div class="stage-info-item">
-                                        <h4>文化理解水平</h4>
-                                        <p>能够进行深度文化批判和跨文化对话，理解文化间的权力关系</p>
-                                    </div>
-                                </div>
-                                
-                                <h4>发展阶段雷达图</h4>
-                                <div class="radar-container">
-                                    <div class="radar-grid"></div>
-                                    <div class="radar-polygon" style="clip-path: polygon(50% 25%, 75% 45%, 95% 70%, 75% 90%, 50% 95%, 25% 90%, 5% 70%, 25% 45%); background-color: rgba(147, 112, 219, 0.3);"></div>
-                                    
-                                    <!-- 雷达图标签 -->
-                                    <div class="radar-label" style="top: 5%; left: 50%;">自我认同</div>
-                                    <div class="radar-label" style="top: 30%; left: 80%;">全球责任感</div>
-                                    <div class="radar-label" style="top: 70%; left: 90%;">系统思维</div>
-                                    <div class="radar-label" style="top: 95%; left: 50%;">辩证思考</div>
-                                    <div class="radar-label" style="top: 70%; left: 10%;">多元整合</div>
-                                    <div class="radar-label" style="top: 30%; left: 20%;">全球行动力</div>
-                                </div>
-                                
-                                <h4>教育干预策略</h4>
-                                <ul>
-                                    <li><strong>全球公民教育</strong>：系统学习全球治理、国际关系和人权议题</li>
-                                    <li><strong>社会创业与行动</strong>：支持学生设计和实施解决全球问题的社会创新项目</li>
-                                    <li><strong>跨文化领导力培养</strong>：培养在多元文化环境中有效领导和协作的能力</li>
-                                    <li><strong>全球伦理反思</strong>：引导学生反思全球化中的伦理困境和公正问题</li>
-                                </ul>
-                                
-                                <div style="background-color: rgba(147, 112, 219, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-                                    <h4>案例：联合国青年领袖计划</h4>
-                                    <p>联合国青年领袖计划为全球青年提供参与联合国议程的机会。参与者通过 mentorship、能力建设培训和项目资助，设计和实施可持续发展目标(SDGs)相关项目，将全球公民意识转化为实际行动。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
-                        <h4>发展阶段连续性说明</h4>
-                        <p>学生世界观发展的四个阶段并非严格线性递进，而是相互重叠、相互影响的连续过程。个体发展速度存在差异，且可能在不同领域呈现不同发展水平。有效的教育干预需要识别学生当前发展阶段，提供适当的挑战和支持，促进向下一阶段的自然过渡。</p>
-                    </div>
-                </div>
-                
-                <!-- 第三部分：影响学生视野的关键因素 -->
-                <div class="expansion-section">
-                    <h2>影响学生视野的关键因素：系统分析与策略框架</h2>
-                    
-                    <p>学生视野的形成和发展受到多重因素的复杂影响，这些因素在不同层面相互作用，共同塑造学生的全球认知和跨文化能力。基于生态系统理论和社会文化理论，我们识别出五个关键影响因素系统。</p>
-                    
-                    <div class="factor-analysis-container">
-                        <!-- 因素一 -->
-                        <div class="factor-card">
-                            <div class="factor-icon">
-                                <i class="fas fa-plane"></i>
-                            </div>
-                            <h3>国际交流机会</h3>
-                            <p>国际交流是扩展学生视野最直接、最有效的途径。通过跨文化接触，学生能够亲身体验文化差异，挑战既有偏见，发展全球意识。</p>
+                            <p>源于活动本身的乐趣和满足感，包括好奇心、兴趣、掌握感和自我表达需求。内在动机驱动的学习更持久、更深入，与创造性思维和问题解决能力正相关。</p>
                             
-                            <div class="factor-details">
-                                <h4>关键子因素</h4>
-                                <ul>
-                                    <li>学生交换项目参与率</li>
-                                    <li>国际夏令营与研学旅行</li>
-                                    <li>虚拟国际交流项目</li>
-                                    <li>国际志愿者经历</li>
-                                </ul>
-                                
-                                <h4>影响因素</h4>
-                                <ul>
-                                    <li>家庭经济资本与文化资本</li>
-                                    <li>学校国际化程度</li>
-                                    <li>政府与国际组织支持</li>
-                                    <li>数字技术可及性</li>
-                                </ul>
-                                
-                                <div class="factor-impact">
-                                    <span>影响力</span>
-                                    <div class="factor-impact-bar">
-                                        <div class="factor-impact-fill" style="width: 80%;"></div>
-                                    </div>
-                                    <span>80%</span>
+                            <div class="motivation-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">32%</div>
+                                    <div class="stat-label">学生主导</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">高</div>
+                                    <div class="stat-label">学习质量</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">强</div>
+                                    <div class="stat-label">持久性</div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- 因素二 -->
-                        <div class="factor-card">
-                            <div class="factor-icon">
-                                <i class="fas fa-language"></i>
+                        <!-- 外在动机 -->
+                        <div class="motivation-card">
+                            <div class="motivation-header">
+                                <div class="motivation-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h4>外在动机</h4>
                             </div>
-                            <h3>多语言能力</h3>
-                            <p>语言不仅是交流工具，更是文化载体和思维方式。多语言能力使学生能够接触不同文化的原初表达，理解文化深层的价值观和世界观。</p>
+                            <p>源于外部奖励或避免惩罚，包括成绩、奖励、认可和避免失败。适当的外在动机可以启动学习行为，但过度依赖可能导致"过度辩护效应"，削弱内在兴趣。</p>
                             
-                            <div class="factor-details">
-                                <h4>关键子因素</h4>
-                                <ul>
-                                    <li>第二语言熟练程度</li>
-                                    <li>第三语言学习经历</li>
-                                    <li>语言沉浸式学习环境</li>
-                                    <li>跨语言文化理解</li>
-                                </ul>
-                                
-                                <h4>影响因素</h4>
-                                <ul>
-                                    <li>早期语言教育机会</li>
-                                    <li>语言教师专业能力</li>
-                                    <li>多语言社区环境</li>
-                                    <li>语言学习资源可及性</li>
-                                </ul>
-                                
-                                <div class="factor-impact">
-                                    <span>影响力</span>
-                                    <div class="factor-impact-bar">
-                                        <div class="factor-impact-fill" style="width: 75%;"></div>
-                                    </div>
-                                    <span>75%</span>
+                            <div class="motivation-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">45%</div>
+                                    <div class="stat-label">学生主导</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">中</div>
+                                    <div class="stat-label">学习质量</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">中</div>
+                                    <div class="stat-label">持久性</div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- 因素三 -->
-                        <div class="factor-card">
-                            <div class="factor-icon">
-                                <i class="fas fa-globe-americas"></i>
-                            </div>
-                            <h3>跨文化课程</h3>
-                            <p>系统性、整合性的跨文化课程是培养学生全球视野的核心路径。通过学科渗透和专题学习，学生能够建立全球议题的知识框架和分析能力。</p>
-                            
-                            <div class="factor-details">
-                                <h4>关键子因素</h4>
-                                <ul>
-                                    <li>全球议题整合程度</li>
-                                    <li>多元文化内容呈现</li>
-                                    <li>批判性思维培养</li>
-                                    <li>国际比较视角</li>
-                                </ul>
-                                
-                                <h4>影响因素</h4>
-                                <ul>
-                                    <li>课程标准与政策导向</li>
-                                    <li>教师跨文化教学能力</li>
-                                    <li>教材与资源多样性</li>
-                                    <li>学校课程自主权</li>
-                                </ul>
-                                
-                                <div class="factor-impact">
-                                    <span>影响力</span>
-                                    <div class="factor-impact-bar">
-                                        <div class="factor-impact-fill" style="width: 70%;"></div>
-                                    </div>
-                                    <span>70%</span>
+                        <!-- 认同调节 -->
+                        <div class="motivation-card">
+                            <div class="motivation-header">
+                                <div class="motivation-icon">
+                                    <i class="fas fa-check-circle"></i>
                                 </div>
+                                <h4>认同调节</h4>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 第二行因素卡片 -->
-                    <div class="factor-analysis-container" style="margin-top: 1.5rem;">
-                        <!-- 因素四 -->
-                        <div class="factor-card">
-                            <div class="factor-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h3>数字媒体素养</h3>
-                            <p>在数字时代，媒体素养成为获取全球信息、参与全球对话的基础能力。学生需要批判性使用数字工具，辨别信息质量，参与全球数字公民社会。</p>
+                            <p>介于内在和外在动机之间，学生认同学习活动的价值并将其内化为个人目标。这种动机类型结合了外部目标的导向性和内部价值的认同感，是教育干预的理想目标。</p>
                             
-                            <div class="factor-details">
-                                <h4>关键子因素</h4>
-                                <ul>
-                                    <li>信息批判性评估能力</li>
-                                    <li>数字内容创作技能</li>
-                                    <li>在线跨文化沟通</li>
-                                    <li>数字公民责任感</li>
-                                </ul>
-                                
-                                <h4>影响因素</h4>
-                                <ul>
-                                    <li>数字基础设施可及性</li>
-                                    <li>媒体素养教育质量</li>
-                                    <li>家庭数字文化环境</li>
-                                    <li>社交媒体算法影响</li>
-                                </ul>
-                                
-                                <div class="factor-impact">
-                                    <span>影响力</span>
-                                    <div class="factor-impact-bar">
-                                        <div class="factor-impact-fill" style="width: 65%;"></div>
-                                    </div>
-                                    <span>65%</span>
+                            <div class="motivation-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">23%</div>
+                                    <div class="stat-label">学生主导</div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 因素五 -->
-                        <div class="factor-card">
-                            <div class="factor-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3>国际教育项目</h3>
-                            <p>结构化的国际教育项目为学生提供系统性全球学习体验。这些项目整合课程、教学法和评估，支持学生发展全球胜任力。</p>
-                            
-                            <div class="factor-details">
-                                <h4>关键子因素</h4>
-                                <ul>
-                                    <li>国际文凭课程(IB)</li>
-                                    <li>联合国教科文组织关联学校</li>
-                                    <li>全球学校伙伴关系</li>
-                                    <li>国际主题学校网络</li>
-                                </ul>
-                                
-                                <h4>影响因素</h4>
-                                <ul>
-                                    <li>学校国际化战略</li>
-                                    <li>国际认证与质量保证</li>
-                                    <li>教师国际专业发展</li>
-                                    <li>跨国教育合作网络</li>
-                                </ul>
-                                
-                                <div class="factor-impact">
-                                    <span>影响力</span>
-                                    <div class="factor-impact-bar">
-                                        <div class="factor-impact-fill" style="width: 60%;"></div>
-                                    </div>
-                                    <span>60%</span>
+                                <div class="stat-item">
+                                    <div class="stat-value">高</div>
+                                    <div class="stat-label">学习质量</div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 因素六 -->
-                        <div class="factor-card">
-                            <div class="factor-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3>社会文化环境</h3>
-                            <p>学生所处的社会文化环境潜移默化地塑造其世界观。开放、多元、包容的社会氛围为学生全球视野发展提供基础性支持。</p>
-                            
-                            <div class="factor-details">
-                                <h4>关键子因素</h4>
-                                <ul>
-                                    <li>社区文化多样性</li>
-                                    <li>社会开放程度</li>
-                                    <li>媒体国际化水平</li>
-                                    <li>公共对话空间</li>
-                                </ul>
-                                
-                                <h4>影响因素</h4>
-                                <ul>
-                                    <li>移民与人口流动</li>
-                                    <li>社会包容政策</li>
-                                    <li>媒体多样性政策</li>
-                                    <li>公民社会活跃度</li>
-                                </ul>
-                                
-                                <div class="factor-impact">
-                                    <span>影响力</span>
-                                    <div class="factor-impact-bar">
-                                        <div class="factor-impact-fill" style="width: 55%;"></div>
-                                    </div>
-                                    <span>55%</span>
+                                <div class="stat-item">
+                                    <div class="stat-value">强</div>
+                                    <div class="stat-label">持久性</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="chart-container">
-                        <h3 class="chart-title">关键因素交互影响矩阵</h3>
-                        <div style="overflow-x: auto; margin-top: 1.5rem;">
-                            <table style="width: 100%; border-collapse: collapse;">
-                                <thead>
-                                    <tr>
-                                        <th style="padding: 1rem; text-align: left; background-color: rgba(78, 205, 196, 0.1);">因素</th>
-                                        <th style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.1);">国际交流</th>
-                                        <th style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.1);">多语言</th>
-                                        <th style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.1);">跨文化课程</th>
-                                        <th style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.1);">数字素养</th>
-                                        <th style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.1);">国际项目</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="padding: 1rem; font-weight: bold;">国际交流</td>
-                                        <td style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.05);">-</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center;">低</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 1rem; font-weight: bold;">多语言</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.05);">-</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 1rem; font-weight: bold;">跨文化课程</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.05);">-</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 1rem; font-weight: bold;">数字素养</td>
-                                        <td style="padding: 1rem; text-align: center;">低</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.05);">-</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 1rem; font-weight: bold;">国际项目</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center;">高</td>
-                                        <td style="padding: 1rem; text-align: center;">中</td>
-                                        <td style="padding: 1rem; text-align: center; background-color: rgba(78, 205, 196, 0.05);">-</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">注：表格显示了各因素之间的相互影响强度（高/中/低）</p>
+                        <h3 class="chart-title">不同动机类型对学习成果的影响</h3>
+                        <div style="height: 350px; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; margin-top: 1.5rem;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">内在动机 - 创造性思维</span>
+                                    <span style="font-weight: bold; color: var(--accent-1);">88%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 88%; height: 100%; background: linear-gradient(90deg, var(--accent-1), #ff8ba3);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">认同调节 - 学习坚持性</span>
+                                    <span style="font-weight: bold; color: var(--accent-3);">79%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 79%; height: 100%; background: linear-gradient(90deg, var(--accent-3), #2ae0b0);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">外在动机 - 任务完成率</span>
+                                    <span style="font-weight: bold; color: var(--accent-2);">65%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--accent-2), #ffdf80);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">外在动机 - 知识保留率</span>
+                                    <span style="font-weight: bold; color: var(--secondary-color);">42%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 42%; height: 100%; background: linear-gradient(90deg, var(--secondary-color), #a88de0);"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <h3>策略建议：多层面干预框架</h3>
-                    <p>基于关键因素分析，我们提出以下多层面干预策略，以系统性地促进学生全球视野发展：</p>
+                    <h3>动机干预策略</h3>
+                    <p>基于动机理论，有效的教育干预应致力于将外在动机内化，并培养和维持内在动机。关键策略包括：提供自主选择机会、创造胜任感体验、建立积极的学习关系、连接学习与个人价值、提供及时有意义的反馈。</p>
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
-                        <div style="background: linear-gradient(135deg, #4ecdc4, #6bd6cf); color: white; padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="margin-bottom: 0.5rem;">个人层面</h4>
-                            <p>发展自我反思能力，主动寻求跨文化体验，培养多语言技能，参与全球议题讨论</p>
-                        </div>
-                        
-                        <div style="background: linear-gradient(135deg, #ff6b8b, #ff8ba3); color: white; padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="margin-bottom: 0.5rem;">学校层面</h4>
-                            <p>整合全球议题到课程体系，提供国际交流机会，创建多元文化校园环境，培养教师全球胜任力</p>
-                        </div>
-                        
-                        <div style="background: linear-gradient(135deg, #ffe66d, #ffed8a); color: white; padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="margin-bottom: 0.5rem;">家庭层面</h4>
-                            <p>提供多元文化接触机会，支持多语言学习，培养批判性媒体使用习惯，参与全球公民对话</p>
-                        </div>
-                        
-                        <div style="background: linear-gradient(135deg, #9370db, #a88de0); color: white; padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="margin-bottom: 0.5rem;">社会层面</h4>
-                            <p>创建开放包容的社会氛围，支持国际教育项目，促进跨文化对话，投资数字基础设施</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
-                        <h4>研究展望</h4>
-                        <p>未来研究需要进一步探讨：1) 各因素在不同文化背景下的作用差异；2) 因素间的动态交互机制；3) 数字技术对全球视野发展的双重影响；4) 全球视野发展的长期追踪研究。这些研究将为设计更有效的教育干预提供证据基础。</p>
+                    <div style="background-color: rgba(106, 90, 205, 0.1); padding: 1.8rem; border-radius: 15px; margin-top: 2rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.8rem;">核心观点</h4>
+                        <p>学生的心理动机是动态变化的复杂系统，受到个人特质、学习环境和社会文化因素的共同影响。成功的教育干预需要识别学生的当前动机状态，提供适当的挑战和支持，促进动机的内化和整合。在全球化教育背景下，培养学生的全球视野和自我认同可以显著增强学习动机的持久性和质量。</p>
                     </div>
                 </div>
                 
-                <!-- 第四部分：全球视野培养策略 -->
+                <!-- 第三部分：影响因素与策略 -->
                 <div class="expansion-section">
-                    <h2>全球视野培养策略：系统实施与评估框架</h2>
+                    <h2>动机影响因素与培养策略：系统性框架</h2>
                     
-                    <p>基于发展阶段模型和关键因素分析，我们提出以下系统性的全球视野培养策略，这些策略需要学校、家庭和社区的协同努力，形成一个完整的教育生态系统。</p>
+                    <p>学生心理动机的形成和发展受到多重因素的复杂影响，这些因素在不同层面相互作用。基于生态系统理论，我们识别出影响学生动机的五个关键层面：个人、课堂、学校、家庭和社会文化层面。</p>
                     
-                    <div class="strategy-container">
-                        <!-- 策略一 -->
-                        <div class="strategy-card">
-                            <div class="strategy-number">1</div>
-                            <h3>整合全球议题到各学科课程</h3>
-                            <p>将全球议题有机融入现有课程体系，使学生在学习学科知识的同时，理解其全球背景和意义。</p>
-                            
-                            <div class="strategy-implementation">
-                                <h4>实施路径</h4>
-                                <ul>
-                                    <li>开发跨学科全球议题模块</li>
-                                    <li>创建全球议题资源库</li>
-                                    <li>培训教师全球议题教学能力</li>
-                                    <li>建立课程整合评估机制</li>
-                                </ul>
-                            </div>
+                    <h3>关键影响因素</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, #6a5acd, #7d6bd4); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">个人因素</h4>
+                            <p>自我效能感、目标定向、兴趣发展、归因方式、自我调节能力、成长型思维</p>
                         </div>
                         
-                        <!-- 策略二 -->
-                        <div class="strategy-card">
-                            <div class="strategy-number">2</div>
-                            <h3>发展跨文化沟通和合作技能</h3>
-                            <p>通过结构化的学习活动和实践机会，培养学生有效沟通、协作和解决跨文化冲突的能力。</p>
-                            
-                            <div class="strategy-implementation">
-                                <h4>实施路径</h4>
-                                <ul>
-                                    <li>设计跨文化沟通工作坊</li>
-                                    <li>建立国际学校伙伴关系</li>
-                                    <li>开展虚拟国际合作项目</li>
-                                    <li>实施跨文化能力评估</li>
-                                </ul>
-                            </div>
+                        <div style="background: linear-gradient(135deg, #ff6b8b, #ff8ba3); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">课堂因素</h4>
+                            <p>教师支持、自主性氛围、任务设计、评估方式、同伴关系、课堂目标结构</p>
                         </div>
                         
-                        <!-- 策略三 -->
-                        <div class="strategy-card">
-                            <div class="strategy-number">3</div>
-                            <h3>提供国际交流和实践机会</h3>
-                            <p>创造多样化的国际交流和实践机会，让学生亲身体验文化差异，发展全球意识。</p>
-                            
-                            <div class="strategy-implementation">
-                                <h4>实施路径</h4>
-                                <ul>
-                                    <li>建立学生交换项目网络</li>
-                                    <li>开发国际研学旅行项目</li>
-                                    <li>创建虚拟国际实习机会</li>
-                                    <li>提供国际志愿服务平台</li>
-                                </ul>
-                            </div>
+                        <div style="background: linear-gradient(135deg, #ffd166, #ffdf80); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">学校因素</h4>
+                            <p>学校氛围、课程结构、支持服务、领导风格、教师专业发展、资源分配</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #06d6a0, #2ae0b0); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">家庭因素</h4>
+                            <p>父母期望、家庭学习环境、教养方式、社会经济地位、文化资本、教育价值观</p>
                         </div>
                     </div>
                     
-                    <!-- 第二行策略卡片 -->
-                    <div class="strategy-container" style="margin-top: 1.5rem;">
-                        <!-- 策略四 -->
-                        <div class="strategy-card">
-                            <div class="strategy-number">4</div>
-                            <h3>培养批判性思维和多元视角</h3>
-                            <p>通过探究式学习和反思实践，培养学生分析复杂全球议题的能力，理解不同文化视角。</p>
-                            
-                            <div class="strategy-implementation">
-                                <h4>实施路径</h4>
-                                <ul>
-                                    <li>开展全球议题辩论和研讨</li>
-                                    <li>实施案例研究和问题解决项目</li>
-                                    <li>创建反思日志和作品集评估</li>
-                                    <li>培养媒体批判性分析能力</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- 策略五 -->
-                        <div class="strategy-card">
-                            <div class="strategy-number">5</div>
-                            <h3>鼓励参与全球公民行动</h3>
-                            <p>支持学生将全球意识转化为实际行动，参与解决本地和全球性问题的公民行动。</p>
-                            
-                            <div class="strategy-implementation">
-                                <h4>实施路径</h4>
-                                <ul>
-                                    <li>建立社会创新项目孵化器</li>
-                                    <li>开展可持续发展目标行动项目</li>
-                                    <li>创建学生主导的全球议题倡导团体</li>
-                                    <li>建立行动学习评估体系</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <!-- 策略六 -->
-                        <div class="strategy-card">
-                            <div class="strategy-number">6</div>
-                            <h3>构建支持性教育生态系统</h3>
-                            <p>创建学校、家庭、社区协同的生态系统，为全球视野培养提供全方位支持。</p>
-                            
-                            <div class="strategy-implementation">
-                                <h4>实施路径</h4>
-                                <ul>
-                                    <li>建立家校全球教育合作伙伴关系</li>
-                                    <li>开发社区全球学习资源网络</li>
-                                    <li>创建跨部门合作机制</li>
-                                    <li>建立持续改进的评估反馈系统</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>动机培养策略</h3>
                     
-                    <div class="chart-container">
-                        <h3 class="chart-title">全球视野培养策略实施路线图</h3>
-                        <div style="height: 350px; display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;">
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: bold;">整合全球议题到各学科课程</span>
-                                    <span style="font-weight: bold; color: var(--primary-color);">80%</span>
-                                </div>
-                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
-                                    <div style="width: 80%; height: 100%; background: linear-gradient(90deg, var(--primary-color), #6bd6cf);"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: bold;">发展跨文化沟通和合作技能</span>
-                                    <span style="font-weight: bold; color: var(--accent-1);">75%</span>
-                                </div>
-                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
-                                    <div style="width: 75%; height: 100%; background: linear-gradient(90deg, var(--accent-1), #ff8ba3);"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: bold;">提供国际交流和实践机会</span>
-                                    <span style="font-weight: bold; color: var(--accent-2);">70%</span>
-                                </div>
-                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
-                                    <div style="width: 70%; height: 100%; background: linear-gradient(90deg, var(--accent-2), #ffed8a);"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: bold;">培养批判性思维和多元视角</span>
-                                    <span style="font-weight: bold; color: var(--accent-3);">65%</span>
-                                </div>
-                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
-                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--accent-3), #a88de0);"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span style="font-weight: bold;">鼓励参与全球公民行动</span>
-                                    <span style="font-weight: bold; color: var(--secondary-color);">60%</span>
-                                </div>
-                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
-                                    <div style="width: 60%; height: 100%; background: linear-gradient(90deg, var(--secondary-color), #7d6bd4);"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>评估框架：多维度全球视野评估</h3>
-                    <p>有效的全球视野培养需要建立全面的评估框架，涵盖知识、技能、态度和行动四个维度：</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
-                        <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">知识维度</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2.5rem 0;">
+                        <div style="background-color: rgba(106, 90, 205, 0.08); padding: 1.8rem; border-radius: 15px; border-left: 5px solid var(--primary-color);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">增强自主性支持</h4>
                             <ul>
-                                <li>全球议题知识测试</li>
-                                <li>跨文化知识评估</li>
-                                <li>国际关系理解</li>
-                                <li>全球系统认知</li>
+                                <li>提供有意义的自主选择机会</li>
+                                <li>解释学习活动的目的和价值</li>
+                                <li>使用非控制性的语言</li>
+                                <li>承认学生的观点和感受</li>
                             </ul>
                         </div>
                         
-                        <div style="background-color: rgba(255, 107, 139, 0.1); padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="color: var(--accent-1); margin-bottom: 0.5rem;">技能维度</h4>
+                        <div style="background-color: rgba(255, 107, 139, 0.08); padding: 1.8rem; border-radius: 15px; border-left: 5px solid var(--accent-1);">
+                            <h4 style="color: var(--accent-1); margin-bottom: 1rem;">培养胜任感</h4>
                             <ul>
-                                <li>跨文化沟通能力评估</li>
-                                <li>批判性思维测试</li>
-                                <li>合作解决问题能力</li>
-                                <li>多语言能力评估</li>
+                                <li>设置适度的挑战性任务</li>
+                                <li>提供及时有效的反馈</li>
+                                <li>强调进步而非完美</li>
+                                <li>教授学习策略和自我调节技能</li>
                             </ul>
                         </div>
                         
-                        <div style="background-color: rgba(255, 230, 109, 0.1); padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="color: var(--accent-2); margin-bottom: 0.5rem;">态度维度</h4>
+                        <div style="background-color: rgba(255, 209, 102, 0.08); padding: 1.8rem; border-radius: 15px; border-left: 5px solid var(--accent-2);">
+                            <h4 style="color: var(--accent-2); margin-bottom: 1rem;">建立归属感</h4>
                             <ul>
-                                <li>全球公民态度量表</li>
-                                <li>文化敏感性评估</li>
-                                <li>全球责任感测量</li>
-                                <li>多元文化态度问卷</li>
-                            </ul>
-                        </div>
-                        
-                        <div style="background-color: rgba(147, 112, 219, 0.1); padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="color: var(--accent-3); margin-bottom: 0.5rem;">行动维度</h4>
-                            <ul>
-                                <li>全球参与行为记录</li>
-                                <li>社会创新项目评估</li>
-                                <li>国际交流参与度</li>
-                                <li>全球议题倡导行动</li>
+                                <li>创建积极包容的课堂氛围</li>
+                                <li>促进合作学习和同伴支持</li>
+                                <li>表达对学生的关心和尊重</li>
+                                <li>连接学习与学生的文化和经历</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
-                        <h4>实施建议</h4>
-                        <p>全球视野培养是一个长期、系统的过程，需要教育系统的整体变革。建议学校从试点项目开始，逐步扩大实施范围；建立教师专业发展体系，提升教师全球胜任力；创建家长和社区参与机制，形成教育合力；开发持续评估和改进机制，确保教育效果。通过系统化的努力，我们可以培养出具备全球视野、跨文化能力和全球责任感的新一代公民。</p>
+                    <div style="background-color: rgba(106, 90, 205, 0.1); padding: 2rem; border-radius: 15px; margin-top: 2.5rem;">
+                        <h4>实施建议与未来研究方向</h4>
+                        <p>动机培养需要系统的、多层面的干预，而不是孤立的策略。建议教育者从课堂实践开始，逐步扩展到学校文化和家庭合作。未来研究需要进一步探讨：1) 数字时代学习动机的新特征；2) 跨文化背景下动机发展的异同；3) 动机干预的长期效果评估；4) 动机与创造性、批判性思维的关系。通过持续的研究和实践创新，我们可以更有效地支持学生在全球化时代的学习和发展。</p>
                     </div>
                 </div>
             </div>
             
             <div class="sidebar">
                 <div class="sidebar-card">
-                    <h3>核心概念</h3>
+                    <h3>心理动机资源</h3>
                     <ul>
-                        <li>全球公民教育</li>
-                        <li>跨文化能力</li>
-                        <li>国际理解教育</li>
-                        <li>多元文化素养</li>
-                        <li>世界主义教育</li>
+                        <li>自我决定理论指南</li>
+                        <li>动机评估工具包</li>
+                        <li>内在动机培养策略</li>
+                        <li>成长型思维干预方案</li>
+                        <li>教师动机支持手册</li>
                     </ul>
-                    <a href="#">查看详细解释 <i class="fas fa-arrow-right"></i></a>
+                    <a href="#">下载资源包 <i class="fas fa-download"></i></a>
                 </div>
                 
                 <div class="sidebar-card">
-                    <h3>评估工具</h3>
+                    <h3>相关研究</h3>
                     <ul>
-                        <li>全球胜任力量表</li>
-                        <li>跨文化敏感度量表</li>
-                        <li>国际视野评估</li>
-                        <li>多元文化态度问卷</li>
-                        <li>全球议题认知测试</li>
+                        <li>全球学生动机比较研究</li>
+                        <li>数字学习环境中的动机</li>
+                        <li>动机与学业成就的元分析</li>
+                        <li>跨文化动机差异研究</li>
+                        <li>动机干预效果评估</li>
                     </ul>
-                    <a href="#">下载评估工具 <i class="fas fa-download"></i></a>
+                    <a href="#">查看研究报告 <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 
                 <div class="sidebar-card">
-                    <h3>国际项目</h3>
-                    <ul>
-                        <li>国际文凭课程</li>
-                        <li>联合国教科文组织项目</li>
-                        <li>学生交流计划</li>
-                        <li>国际模拟联合国</li>
-                        <li>全球学校伙伴关系</li>
-                    </ul>
-                    <a href="#">查看项目详情 <i class="fas fa-external-link-alt"></i></a>
-                </div>
-                
-                <div class="sidebar-card">
-                    <h3>研究资源</h3>
-                    <ul>
-                        <li>PISA全球胜任力报告</li>
-                        <li>全球教育监测报告</li>
-                        <li>国际教育比较研究</li>
-                        <li>跨文化教育期刊</li>
-                        <li>全球公民教育案例库</li>
-                    </ul>
-                    <a href="#">访问资源库 <i class="fas fa-book-open"></i></a>
-                </div>
-                
-                <div class="sidebar-card">
-                    <h3>相关案例</h3>
-                    <ul>
-                        <li>芬兰全球教育实践</li>
-                        <li>新加坡国际学校模式</li>
-                        <li>加拿大多元文化教育</li>
-                        <li>澳大利亚亚洲素养项目</li>
-                        <li>欧盟全球公民教育倡议</li>
-                    </ul>
-                    <a href="#">查看更多案例 <i class="fas fa-file-alt"></i></a>
+                    <h3>其他项目网站</h3>
+                    <div class="project-links">
+                        <a href="https://yohayi.github.io/-history/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>信技化生-技术交流</h4>
+                                <p>历史与技术学科交叉研究</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/jinghongzhai--/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>惊鸿斋官方网站</h4>
+                                <p>文化与艺术展示平台</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/my-personal-edu-website/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>杭州市教育总结</h4>
+                                <p>地方教育实践与反思</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/2026--/index.html" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>教育数据与交流</h4>
+                                <p>教育数据分析与可视化</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/geometry-string-map/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-shapes"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>几何弦理论交流</h4>
+                                <p>数学与物理跨学科研究</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/BDCG---/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>BDCG游戏技术</h4>
+                                <p>游戏开发与美术素材</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/yohayi-/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>游海洋个人网站</h4>
+                                <p>个人作品与项目展示</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/-AI-/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>流式AI监控</h4>
+                                <p>人工智能应用与监控</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2047,30 +1528,46 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3>关于我们</h3>
-                <p>全球教育改革分析网站致力于提供数据驱动的教育洞察，帮助政策制定者、教育工作者和研究人員理解全球教育趋势。</p>
-                <div class="social-links" style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                <p>全球教育改革分析网站致力于提供数据驱动的教育洞察，帮助政策制定者、教育工作者和研究人员理解全球教育趋势，特别是学生心理发展与学习动机的关系。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             
             <div class="footer-column">
-                <h3>相关页面</h3>
+                <h3>快速导航</h3>
                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="motivation.html">学生心理动机</a></li>
-                    <li><a href="values.html">价值观分析</a></li>
-                    <li><a href="vision.html">学生视野</a></li>
-                    <li><a href="cases.html">案例研究</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="index.html">首页</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="motivation.html">心理动机分析</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="values.html">价值观分析</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="vision.html">学生视野分析</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="cases.html">案例研究</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
                 <h3>联系我们</h3>
-                <p><i class="fas fa-envelope"></i> contact@global-edu-analysis.org</p>
-                <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
-                <p><i class="fas fa-map-marker-alt"></i> 教育创新中心, 国际教育街123号</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <span>游海洋</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>133-7788-6896</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@global-edu-analysis.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>教育创新中心, 杭州市</span>
+                    </div>
+                </div>
             </div>
             
             <div class="footer-column">
@@ -2078,14 +1575,15 @@
                 <form class="contact-form" id="contactForm">
                     <input type="text" placeholder="您的姓名" required>
                     <input type="email" placeholder="电子邮件" required>
-                    <textarea rows="3" placeholder="您的消息" required></textarea>
+                    <textarea rows="4" placeholder="您的消息" required></textarea>
                     <button type="submit">发送消息</button>
                 </form>
             </div>
         </div>
         
         <div class="copyright">
-            <p>&copy; 2023 全球教育改革分析网站. 保留所有权利.</p>
+            <p>&copy; 2023-2024 全球教育改革分析网站. 保留所有权利.</p>
+            <p>设计者: <a href="https://yohayi.github.io/yohayi-/" target="_blank">游海洋</a> | 电话: 133-7788-6896</p>
         </div>
     </footer>
     
@@ -2166,66 +1664,36 @@
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('感谢您的消息！我们会尽快回复。');
+            alert('感谢您的消息！我们会尽快与您联系。');
             contactForm.reset();
-        });
-        
-        // 世界观发展阶段切换
-        const stageTabs = document.querySelectorAll('.stage-tab');
-        const stageDetails = document.querySelectorAll('.stage-detail-content');
-        
-        stageTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // 移除所有active类
-                stageTabs.forEach(t => t.classList.remove('active'));
-                stageDetails.forEach(d => d.classList.remove('active'));
-                
-                // 添加active类到当前标签和对应内容
-                tab.classList.add('active');
-                const stageId = tab.getAttribute('data-stage');
-                document.getElementById(`stage-${stageId}-detail`).classList.add('active');
-            });
         });
         
         // 页面加载动画
         document.addEventListener('DOMContentLoaded', function() {
-            // 雷达图轴生成
-            const radarContainers = document.querySelectorAll('.radar-container');
-            
-            radarContainers.forEach(container => {
-                // 创建雷达图轴线
-                for (let i = 0; i < 8; i++) {
-                    const axis = document.createElement('div');
-                    axis.className = 'radar-axis';
-                    axis.style.transform = `rotate(${i * 45}deg)`;
-                    container.appendChild(axis);
-                }
-            });
-            
-            // 因素卡片动画
-            const factorCards = document.querySelectorAll('.factor-card');
-            factorCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+            // 理论卡片动画
+            const theoryItems = document.querySelectorAll('.theory-item');
+            theoryItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
                 
                 setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
                 }, 300 + index * 150);
             });
             
-            // 策略卡片动画
-            const strategyCards = document.querySelectorAll('.strategy-card');
-            strategyCards.forEach((card, index) => {
+            // 动机卡片动画
+            const motivationCards = document.querySelectorAll('.motivation-card');
+            motivationCards.forEach((card, index) => {
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+                card.style.transform = 'translateY(30px)';
                 
                 setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, 500 + index * 150);
+                }, 600 + index * 200);
             });
             
             // 数据点动画
@@ -2237,7 +1705,7 @@
                 setTimeout(() => {
                     let current = 0;
                     const target = parseInt(originalText);
-                    const increment = target / 30;
+                    const increment = target / 40;
                     
                     const timer = setInterval(() => {
                         current += increment;
@@ -2247,44 +1715,60 @@
                         }
                         value.textContent = Math.round(current) + '%';
                     }, 30);
-                }, 800 + index * 200);
+                }, 800 + index * 250);
             });
             
-            // 条形图动画
-            const chartBars = document.querySelectorAll('.factor-impact-fill, .strategy-card + .chart-container [style*="width"]');
+            // 图表动画
+            const chartBars = document.querySelectorAll('.chart-container [style*="width"]');
             chartBars.forEach((bar, index) => {
                 const originalWidth = bar.style.width;
                 bar.style.width = '0%';
                 
                 setTimeout(() => {
-                    bar.style.transition = 'width 1.5s ease';
+                    bar.style.transition = 'width 1.8s cubic-bezier(0.22, 0.61, 0.36, 1)';
                     bar.style.width = originalWidth;
-                }, 1000 + index * 200);
+                }, 1200 + index * 300);
             });
             
-            // 交互式表格行悬停效果
-            const tableRows = document.querySelectorAll('tbody tr');
-            tableRows.forEach(row => {
-                row.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = 'rgba(78, 205, 196, 0.1)';
-                });
+            // 时间线项目动画
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
                 
-                row.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = '';
-                });
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 1000 + index * 200);
             });
             
             // 侧边栏卡片动画
             const sidebarCards = document.querySelectorAll('.sidebar-card');
             sidebarCards.forEach((card, index) => {
                 card.style.opacity = '0';
-                card.style.transform = 'translateX(20px)';
+                card.style.transform = 'translateX(30px)';
                 
                 setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
                     card.style.opacity = '1';
                     card.style.transform = 'translateX(0)';
-                }, 700 + index * 100);
+                }, 500 + index * 150);
+            });
+            
+            // 项目链接悬停效果
+            const projectLinks = document.querySelectorAll('.project-link');
+            projectLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.project-icon');
+                    icon.style.transform = 'rotate(10deg) scale(1.1)';
+                    icon.style.transition = 'transform 0.3s ease';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.project-icon');
+                    icon.style.transform = 'rotate(0) scale(1)';
+                });
             });
         });
         
