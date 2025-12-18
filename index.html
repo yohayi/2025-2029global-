@@ -328,7 +328,103 @@
             color: var(--secondary-color);
         }
         
-        /* 世界观发展阶段扩展 */
+        /* 第一部分：全球化背景下的学生视野 */
+        .world-map {
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(78, 205, 196, 0.7), rgba(106, 90, 205, 0.7));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .map-overlay p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            max-width: 600px;
+            font-weight: normal;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            background-color: rgba(78, 205, 196, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .dark-mode .feature-item {
+            background-color: rgba(78, 205, 196, 0.2);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(78, 205, 196, 0.15);
+        }
+        
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .data-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        
+        .data-point {
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .data-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .dark-mode .data-label {
+            color: var(--text-light);
+        }
+        
+        /* 第二部分：学生世界观发展阶段 */
         .stage-detail-container {
             display: flex;
             flex-direction: column;
@@ -462,7 +558,7 @@
             background-color: rgba(255, 107, 139, 0.3);
         }
         
-        /* 影响因素扩展 */
+        /* 第三部分：影响学生视野的关键因素 */
         .factor-analysis-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -613,6 +709,65 @@
             font-weight: bold;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
+        }
+        
+        /* 第四部分：全球视野培养策略 */
+        .strategy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .strategy-card {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .strategy-card {
+            background-color: var(--dark-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .strategy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(78, 205, 196, 0.15);
+        }
+        
+        .strategy-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            font-weight: bold;
+            color: rgba(78, 205, 196, 0.1);
+        }
+        
+        .dark-mode .strategy-number {
+            color: rgba(78, 205, 196, 0.2);
+        }
+        
+        .strategy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .strategy-implementation {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(78, 205, 196, 0.2);
+        }
+        
+        .strategy-implementation h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary-color);
         }
         
         /* 侧边栏 */
@@ -807,12 +962,25 @@
                 padding: 1.5rem;
             }
             
+            .world-map {
+                height: 300px;
+            }
+            
+            .map-overlay {
+                font-size: 1.5rem;
+            }
+            
+            .map-overlay p {
+                font-size: 1rem;
+            }
+            
             .radar-container {
                 width: 280px;
                 height: 280px;
             }
             
-            .factor-analysis-container {
+            .factor-analysis-container,
+            .strategy-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -833,6 +1001,11 @@
             .stage-tab {
                 padding: 0.6rem 1rem;
                 font-size: 0.9rem;
+            }
+            
+            .data-points {
+                flex-direction: column;
+                align-items: center;
             }
             
             .footer-content {
@@ -901,12 +1074,141 @@
                 <!-- 第一部分：全球化背景下的学生视野 -->
                 <div class="expansion-section">
                     <h2>全球化背景下的学生视野：多维视角与变革趋势</h2>
+                    
                     <p>在21世纪的全球化浪潮中，学生的视野已经从传统的地方性认知扩展到全球性认知。教育系统面临的核心挑战是如何帮助学生构建既具有全球广度又具有文化深度的世界观，以应对日益复杂多变的国际环境。</p>
                     
-                    <!-- 内容已扩展，这里保持简洁 -->
+                    <div class="world-map">
+                        <div class="map-overlay">
+                            <div>全球视野发展路径</div>
+                            <p>从本土认知到全球公民的演进过程，反映了学生世界观的形成与扩展</p>
+                        </div>
+                    </div>
+                    
+                    <h3>全球化对学生视野的多维度影响</h3>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>认知维度扩展</h4>
+                            <p>全球化促使学生的认知框架从单一文化视角向多元文化视角转变，学生开始理解不同文化背景下的思维方式和价值观念，形成更加包容和开放的认知结构。</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4>情感维度深化</h4>
+                            <p>学生通过接触全球议题和文化多样性，发展出对全球问题的共情能力，形成跨国界的情感连接，增强了作为全球公民的责任感和认同感。</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4>技能维度丰富</h4>
+                            <p>全球视野的培养要求学生掌握跨文化沟通、国际协作、多语言表达等新型技能，这些技能在传统教育体系中往往被忽视，但在全球化时代变得日益重要。</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h4>行动维度激活</h4>
+                            <p>具备全球视野的学生更有可能参与国际志愿服务、全球议题倡导和跨国合作项目，将全球意识转化为实际行动，为全球问题的解决贡献力量。</p>
+                        </div>
+                    </div>
+                    
+                    <h3>全球视野发展的关键数据</h3>
+                    
+                    <div class="data-points">
+                        <div class="data-point">
+                            <div class="data-value">73%</div>
+                            <div class="data-label">学生认为国际交流<br>扩大了他们的视野</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">58%</div>
+                            <div class="data-label">学生能识别至少<br>三个全球性议题</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">42%</div>
+                            <div class="data-label">学生参与过<br>跨国合作项目</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">67%</div>
+                            <div class="data-label">学生认为学校课程<br>应包含更多全球议题</div>
+                        </div>
+                    </div>
+                    
+                    <h3>全球视野发展的阶段性特征</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1990年代</div>
+                            <p><strong>媒体接触为主</strong>：学生主要通过电视、报纸等传统媒体了解外部世界，信息渠道有限且单向。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2000年代</div>
+                            <p><strong>互联网兴起</strong>：互联网的普及使学生能够自主获取全球信息，但信息质量和筛选能力成为新挑战。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2010年代</div>
+                            <p><strong>社交媒体时代</strong>：社交媒体成为学生了解世界的主要渠道，促进了全球同龄人之间的直接交流，但也带来信息茧房效应。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020年代</div>
+                            <p><strong>混合学习时代</strong>：在线国际课程、虚拟交流项目、混合式学习模式成为全球视野培养的新途径，技术赋能个性化全球学习。</p>
+                        </div>
+                    </div>
+                    
+                    <h3>区域差异与全球视野发展</h3>
+                    
+                    <div class="chart-container">
+                        <h3 class="chart-title">不同地区学生全球视野发展水平比较</h3>
+                        <div style="height: 300px; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">北欧地区</div>
+                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
+                                    <div style="width: 88%; height: 100%; background: linear-gradient(90deg, var(--primary-color), #6bd6cf); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">88%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">东亚地区</div>
+                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
+                                    <div style="width: 72%; height: 100%; background: linear-gradient(90deg, var(--accent-1), #ff8ba3); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">72%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">北美地区</div>
+                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
+                                    <div style="width: 78%; height: 100%; background: linear-gradient(90deg, var(--accent-2), #ffed8a); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">78%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">非洲地区</div>
+                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
+                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--accent-3), #a88de0); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">65%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 90px; font-weight: bold; margin-right: 1rem;">拉美地区</div>
+                                <div style="flex: 1; height: 30px; background: #eee; border-radius: 15px; overflow: hidden;">
+                                    <div style="width: 70%; height: 100%; background: linear-gradient(90deg, var(--secondary-color), #7d6bd4); display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">70%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>面临的挑战与未来趋势</h3>
+                    
+                    <p>在全球视野培养过程中，教育系统面临多重挑战：1) 数字鸿沟导致的教育资源不平等；2) 文化霸权与本土价值的平衡；3) 全球议题的复杂性与认知负荷；4) 技术依赖与真实人际交往的平衡。未来全球视野教育将呈现以下趋势：更加注重批判性全球公民教育、技术赋能个性化全球学习、跨文化能力的深度培养、全球议题的跨学科整合。</p>
+                    
+                    <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">核心观点</h4>
+                        <p>全球化背景下的学生视野培养不仅是知识扩展的过程，更是认知重构、情感深化、技能发展和行动激活的综合性教育过程。成功的全球视野教育需要整合课程、教学、评估和校园文化的系统变革，同时尊重学生的文化背景和发展阶段，实现全球化与本土化的有机平衡。</p>
+                    </div>
                 </div>
                 
-                <!-- 第二部分：学生世界观发展阶段 - 完全扩展 -->
+                <!-- 第二部分：学生世界观发展阶段 -->
                 <div class="expansion-section">
                     <h2>学生世界观发展：阶段模型与教育干预策略</h2>
                     
@@ -1143,7 +1445,7 @@
                     </div>
                 </div>
                 
-                <!-- 第三部分：影响学生视野的关键因素 - 完全扩展 -->
+                <!-- 第三部分：影响学生视野的关键因素 -->
                 <div class="expansion-section">
                     <h2>影响学生视野的关键因素：系统分析与策略框架</h2>
                     
@@ -1457,27 +1759,221 @@
                 </div>
                 
                 <!-- 第四部分：全球视野培养策略 -->
-                <h2>全球视野培养策略</h2>
-                <p>基于发展阶段模型和关键因素分析，我们提出以下系统性的全球视野培养策略，这些策略需要学校、家庭和社区的协同努力：</p>
-                
-                <div class="chart-container">
-                    <h3 class="chart-title">全球视野培养策略实施路线图</h3>
-                    <div style="height: 300px; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 80%; height: 30px; background: linear-gradient(90deg, var(--primary-color), #6bd6cf); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">整合全球议题到各学科课程 (80%)</div>
+                <div class="expansion-section">
+                    <h2>全球视野培养策略：系统实施与评估框架</h2>
+                    
+                    <p>基于发展阶段模型和关键因素分析，我们提出以下系统性的全球视野培养策略，这些策略需要学校、家庭和社区的协同努力，形成一个完整的教育生态系统。</p>
+                    
+                    <div class="strategy-container">
+                        <!-- 策略一 -->
+                        <div class="strategy-card">
+                            <div class="strategy-number">1</div>
+                            <h3>整合全球议题到各学科课程</h3>
+                            <p>将全球议题有机融入现有课程体系，使学生在学习学科知识的同时，理解其全球背景和意义。</p>
+                            
+                            <div class="strategy-implementation">
+                                <h4>实施路径</h4>
+                                <ul>
+                                    <li>开发跨学科全球议题模块</li>
+                                    <li>创建全球议题资源库</li>
+                                    <li>培训教师全球议题教学能力</li>
+                                    <li>建立课程整合评估机制</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 75%; height: 30px; background: linear-gradient(90deg, var(--accent-1), #ff8ba3); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">发展跨文化沟通和合作技能 (75%)</div>
+                        
+                        <!-- 策略二 -->
+                        <div class="strategy-card">
+                            <div class="strategy-number">2</div>
+                            <h3>发展跨文化沟通和合作技能</h3>
+                            <p>通过结构化的学习活动和实践机会，培养学生有效沟通、协作和解决跨文化冲突的能力。</p>
+                            
+                            <div class="strategy-implementation">
+                                <h4>实施路径</h4>
+                                <ul>
+                                    <li>设计跨文化沟通工作坊</li>
+                                    <li>建立国际学校伙伴关系</li>
+                                    <li>开展虚拟国际合作项目</li>
+                                    <li>实施跨文化能力评估</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 70%; height: 30px; background: linear-gradient(90deg, var(--accent-2), #ffed8a); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">提供国际交流和实践机会 (70%)</div>
+                        
+                        <!-- 策略三 -->
+                        <div class="strategy-card">
+                            <div class="strategy-number">3</div>
+                            <h3>提供国际交流和实践机会</h3>
+                            <p>创造多样化的国际交流和实践机会，让学生亲身体验文化差异，发展全球意识。</p>
+                            
+                            <div class="strategy-implementation">
+                                <h4>实施路径</h4>
+                                <ul>
+                                    <li>建立学生交换项目网络</li>
+                                    <li>开发国际研学旅行项目</li>
+                                    <li>创建虚拟国际实习机会</li>
+                                    <li>提供国际志愿服务平台</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 65%; height: 30px; background: linear-gradient(90deg, var(--accent-3), #a88de0); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">培养批判性思维和多元视角 (65%)</div>
+                    </div>
+                    
+                    <!-- 第二行策略卡片 -->
+                    <div class="strategy-container" style="margin-top: 1.5rem;">
+                        <!-- 策略四 -->
+                        <div class="strategy-card">
+                            <div class="strategy-number">4</div>
+                            <h3>培养批判性思维和多元视角</h3>
+                            <p>通过探究式学习和反思实践，培养学生分析复杂全球议题的能力，理解不同文化视角。</p>
+                            
+                            <div class="strategy-implementation">
+                                <h4>实施路径</h4>
+                                <ul>
+                                    <li>开展全球议题辩论和研讨</li>
+                                    <li>实施案例研究和问题解决项目</li>
+                                    <li>创建反思日志和作品集评估</li>
+                                    <li>培养媒体批判性分析能力</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 60%; height: 30px; background: linear-gradient(90deg, var(--secondary-color), #7d6bd4); border-radius: 15px; display: flex; align-items: center; padding-left: 1rem; color: white; font-weight: bold;">鼓励参与全球公民行动 (60%)</div>
+                        
+                        <!-- 策略五 -->
+                        <div class="strategy-card">
+                            <div class="strategy-number">5</div>
+                            <h3>鼓励参与全球公民行动</h3>
+                            <p>支持学生将全球意识转化为实际行动，参与解决本地和全球性问题的公民行动。</p>
+                            
+                            <div class="strategy-implementation">
+                                <h4>实施路径</h4>
+                                <ul>
+                                    <li>建立社会创新项目孵化器</li>
+                                    <li>开展可持续发展目标行动项目</li>
+                                    <li>创建学生主导的全球议题倡导团体</li>
+                                    <li>建立行动学习评估体系</li>
+                                </ul>
+                            </div>
                         </div>
+                        
+                        <!-- 策略六 -->
+                        <div class="strategy-card">
+                            <div class="strategy-number">6</div>
+                            <h3>构建支持性教育生态系统</h3>
+                            <p>创建学校、家庭、社区协同的生态系统，为全球视野培养提供全方位支持。</p>
+                            
+                            <div class="strategy-implementation">
+                                <h4>实施路径</h4>
+                                <ul>
+                                    <li>建立家校全球教育合作伙伴关系</li>
+                                    <li>开发社区全球学习资源网络</li>
+                                    <li>创建跨部门合作机制</li>
+                                    <li>建立持续改进的评估反馈系统</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3 class="chart-title">全球视野培养策略实施路线图</h3>
+                        <div style="height: 350px; display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">整合全球议题到各学科课程</span>
+                                    <span style="font-weight: bold; color: var(--primary-color);">80%</span>
+                                </div>
+                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                                    <div style="width: 80%; height: 100%; background: linear-gradient(90deg, var(--primary-color), #6bd6cf);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">发展跨文化沟通和合作技能</span>
+                                    <span style="font-weight: bold; color: var(--accent-1);">75%</span>
+                                </div>
+                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                                    <div style="width: 75%; height: 100%; background: linear-gradient(90deg, var(--accent-1), #ff8ba3);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">提供国际交流和实践机会</span>
+                                    <span style="font-weight: bold; color: var(--accent-2);">70%</span>
+                                </div>
+                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                                    <div style="width: 70%; height: 100%; background: linear-gradient(90deg, var(--accent-2), #ffed8a);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">培养批判性思维和多元视角</span>
+                                    <span style="font-weight: bold; color: var(--accent-3);">65%</span>
+                                </div>
+                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--accent-3), #a88de0);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">鼓励参与全球公民行动</span>
+                                    <span style="font-weight: bold; color: var(--secondary-color);">60%</span>
+                                </div>
+                                <div style="height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                                    <div style="width: 60%; height: 100%; background: linear-gradient(90deg, var(--secondary-color), #7d6bd4);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>评估框架：多维度全球视野评估</h3>
+                    <p>有效的全球视野培养需要建立全面的评估框架，涵盖知识、技能、态度和行动四个维度：</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                        <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">知识维度</h4>
+                            <ul>
+                                <li>全球议题知识测试</li>
+                                <li>跨文化知识评估</li>
+                                <li>国际关系理解</li>
+                                <li>全球系统认知</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 107, 139, 0.1); padding: 1.5rem; border-radius: 10px;">
+                            <h4 style="color: var(--accent-1); margin-bottom: 0.5rem;">技能维度</h4>
+                            <ul>
+                                <li>跨文化沟通能力评估</li>
+                                <li>批判性思维测试</li>
+                                <li>合作解决问题能力</li>
+                                <li>多语言能力评估</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 230, 109, 0.1); padding: 1.5rem; border-radius: 10px;">
+                            <h4 style="color: var(--accent-2); margin-bottom: 0.5rem;">态度维度</h4>
+                            <ul>
+                                <li>全球公民态度量表</li>
+                                <li>文化敏感性评估</li>
+                                <li>全球责任感测量</li>
+                                <li>多元文化态度问卷</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: rgba(147, 112, 219, 0.1); padding: 1.5rem; border-radius: 10px;">
+                            <h4 style="color: var(--accent-3); margin-bottom: 0.5rem;">行动维度</h4>
+                            <ul>
+                                <li>全球参与行为记录</li>
+                                <li>社会创新项目评估</li>
+                                <li>国际交流参与度</li>
+                                <li>全球议题倡导行动</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: rgba(78, 205, 196, 0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                        <h4>实施建议</h4>
+                        <p>全球视野培养是一个长期、系统的过程，需要教育系统的整体变革。建议学校从试点项目开始，逐步扩大实施范围；建立教师专业发展体系，提升教师全球胜任力；创建家长和社区参与机制，形成教育合力；开发持续评估和改进机制，确保教育效果。通过系统化的努力，我们可以培养出具备全球视野、跨文化能力和全球责任感的新一代公民。</p>
                     </div>
                 </div>
             </div>
@@ -1530,6 +2026,18 @@
                     </ul>
                     <a href="#">访问资源库 <i class="fas fa-book-open"></i></a>
                 </div>
+                
+                <div class="sidebar-card">
+                    <h3>相关案例</h3>
+                    <ul>
+                        <li>芬兰全球教育实践</li>
+                        <li>新加坡国际学校模式</li>
+                        <li>加拿大多元文化教育</li>
+                        <li>澳大利亚亚洲素养项目</li>
+                        <li>欧盟全球公民教育倡议</li>
+                    </ul>
+                    <a href="#">查看更多案例 <i class="fas fa-file-alt"></i></a>
+                </div>
             </div>
         </div>
     </main>
@@ -1554,6 +2062,7 @@
                     <li><a href="motivation.html">学生心理动机</a></li>
                     <li><a href="values.html">价值观分析</a></li>
                     <li><a href="vision.html">学生视野</a></li>
+                    <li><a href="cases.html">案例研究</a></li>
                 </ul>
             </div>
             
@@ -1678,8 +2187,9 @@
             });
         });
         
-        // 雷达图轴生成
+        // 页面加载动画
         document.addEventListener('DOMContentLoaded', function() {
+            // 雷达图轴生成
             const radarContainers = document.querySelectorAll('.radar-container');
             
             radarContainers.forEach(container => {
@@ -1705,6 +2215,53 @@
                 }, 300 + index * 150);
             });
             
+            // 策略卡片动画
+            const strategyCards = document.querySelectorAll('.strategy-card');
+            strategyCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 500 + index * 150);
+            });
+            
+            // 数据点动画
+            const dataValues = document.querySelectorAll('.data-value');
+            dataValues.forEach((value, index) => {
+                const originalText = value.textContent;
+                value.textContent = '0%';
+                
+                setTimeout(() => {
+                    let current = 0;
+                    const target = parseInt(originalText);
+                    const increment = target / 30;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        value.textContent = Math.round(current) + '%';
+                    }, 30);
+                }, 800 + index * 200);
+            });
+            
+            // 条形图动画
+            const chartBars = document.querySelectorAll('.factor-impact-fill, .strategy-card + .chart-container [style*="width"]');
+            chartBars.forEach((bar, index) => {
+                const originalWidth = bar.style.width;
+                bar.style.width = '0%';
+                
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s ease';
+                    bar.style.width = originalWidth;
+                }, 1000 + index * 200);
+            });
+            
             // 交互式表格行悬停效果
             const tableRows = document.querySelectorAll('tbody tr');
             tableRows.forEach(row => {
@@ -1715,6 +2272,34 @@
                 row.addEventListener('mouseleave', function() {
                     this.style.backgroundColor = '';
                 });
+            });
+            
+            // 侧边栏卡片动画
+            const sidebarCards = document.querySelectorAll('.sidebar-card');
+            sidebarCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateX(0)';
+                }, 700 + index * 100);
+            });
+        });
+        
+        // 滚动动画
+        window.addEventListener('scroll', function() {
+            const expansionSections = document.querySelectorAll('.expansion-section');
+            
+            expansionSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
             });
         });
     </script>
