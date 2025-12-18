@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生心理动机分析 - 全球教育改革</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #9370db;
+            --accent-1: #ff6b8b;
+            --accent-2: #ffd166;
+            --accent-3: #06d6a0;
+            --dark-bg: #0f0f23;
+            --dark-card: #1a1a2e;
+            --light-bg: #f5f7ff;
+            --light-card: #ffffff;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --grid-color: rgba(106, 90, 205, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            transition: var(--transition);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+        
+        /* 网格背景 */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .grid-light {
+            background-image: 
+                radial-gradient(circle at 15% 15%, var(--grid-color) 2px, transparent 2px),
+                radial-gradient(circle at 85% 85%, var(--grid-color) 2px, transparent 2px),
+                radial-gradient(circle at 85% 15%, var(--grid-color) 2px, transparent 2px),
+                radial-gradient(circle at 15% 85%, var(--grid-color) 2px, transparent 2px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+        
+        .grid-dark {
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(106, 90, 205, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 90% 90%, rgba(106, 90, 205, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 90% 10%, rgba(106, 90, 205, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 10% 90%, rgba(106, 90, 205, 0.2) 2px, transparent 2px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+        
+        /* 彩色点 */
+        .color-dots {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(10px) translateX(-10px);
+            }
+            75% {
+                transform: translateY(-10px) translateX(-20px);
+            }
+        }
+        
+        /* 头部样式 */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        
+        .dark-mode header {
+            background-color: rgba(15, 15, 35, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+        }
+        
+        .logo h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* 搜索框 */
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            background-color: #f9f9f9;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .search-container input {
+            background-color: #2a1a4a;
+            border-color: #3a2a6a;
+            color: var(--text-light);
+        }
+        
+        .search-container i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        
+        /* 主题切换按钮 */
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(106, 90, 205, 0.1);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background-color: rgba(106, 90, 205, 0.2);
+        }
+        
+        /* 导航菜单 */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .dark-mode nav a {
+            color: var(--text-light);
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 90, 205, 0.3);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(106, 90, 205, 0.1);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 页面内容 */
+        main {
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .page-header {
+            padding: 2.5rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(106, 90, 205, 0.2);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .dark-mode .page-header p {
+            color: #aaa;
+        }
+        
+        .page-header .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+        
+        .dark-mode .page-header .breadcrumb {
+            color: #aaa;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .breadcrumb i {
+            font-size: 0.7rem;
+        }
+        
+        /* 内容布局 */
+        .content-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 992px) {
+            .content-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 主要内容 */
+        .main-content h2 {
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary-color);
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid rgba(106, 90, 205, 0.2);
+        }
+        
+        .main-content h3 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .main-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* 扩展部分样式 */
+        .expansion-section {
+            background-color: var(--light-card);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 4rem 0;
+            border-left: 6px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .expansion-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .dark-mode .expansion-section {
+            background-color: var(--dark-card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .expansion-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .expansion-section h3 {
+            font-size: 1.7rem;
+            margin: 2rem 0 1.2rem;
+            color: var(--secondary-color);
+        }
+        
+        /* 第一部分：心理动机理论 */
+        .theory-visual {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-1));
+            border-radius: 20px;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theory-visual-content {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 2rem;
+            z-index: 2;
+        }
+        
+        .theory-visual-content p {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            font-weight: normal;
+            max-width: 700px;
+        }
+        
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        .theory-item {
+            background-color: rgba(106, 90, 205, 0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid rgba(106, 90, 205, 0.1);
+        }
+        
+        .dark-mode .theory-item {
+            background-color: rgba(106, 90, 205, 0.15);
+        }
+        
+        .theory-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(106, 90, 205, 0.15);
+        }
+        
+        .theory-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .theory-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+        
+        /* 数据展示 */
+        .data-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.5rem 0;
+            justify-content: center;
+        }
+        
+        .data-point {
+            text-align: center;
+            min-width: 180px;
+            padding: 1.5rem;
+            background-color: rgba(106, 90, 205, 0.08);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+        
+        .data-point:hover {
+            transform: scale(1.05);
+            background-color: rgba(106, 90, 205, 0.12);
+        }
+        
+        .dark-mode .data-point {
+            background-color: rgba(106, 90, 205, 0.15);
+        }
+        
+        .data-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .data-label {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .dark-mode .data-label {
+            color: var(--text-light);
+        }
+        
+        /* 第二部分：动机类型分析 */
+        .motivation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        .motivation-card {
+            background-color: var(--light-card);
+            border-radius: 15px;
+            padding: 2.2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .dark-mode .motivation-card {
+            background-color: var(--dark-card);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .motivation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(106, 90, 205, 0.2);
+        }
+        
+        .motivation-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .motivation-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(106, 90, 205, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-right: 1.2rem;
+        }
+        
+        .motivation-header h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .motivation-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(106, 90, 205, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .dark-mode .stat-label {
+            color: #aaa;
+        }
+        
+        /* 图表容器 */
+        .chart-container {
+            background-color: var(--light-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+            border: 1px solid rgba(106, 90, 205, 0.1);
+        }
+        
+        .dark-mode .chart-container {
+            background-color: var(--dark-card);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .chart-title {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        /* 交互式时间线 */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-1));
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+        
+        .dark-mode .timeline-item::before {
+            border-color: var(--dark-bg);
+        }
+        
+        .timeline-year {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        
+        .sidebar-card {
+            background-color: var(--light-card);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(106, 90, 205, 0.1);
+            transition: var(--transition);
+        }
+        
+        .sidebar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(106, 90, 205, 0.15);
+        }
+        
+        .dark-mode .sidebar-card {
+            background-color: var(--dark-card);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .sidebar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid rgba(106, 90, 205, 0.2);
+        }
+        
+        .sidebar-card ul {
+            list-style: none;
+        }
+        
+        .sidebar-card ul li {
+            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .sidebar-card ul li:before {
+            content: "›";
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .sidebar-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-top: 1.2rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+        
+        .sidebar-card a:hover {
+            padding-left: 8px;
+        }
+        
+        .sidebar-card a i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .sidebar-card a:hover i {
+            transform: translateX(5px);
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(106, 90, 205, 0.08);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        
+        .dark-mode .project-link {
+            background-color: rgba(106, 90, 205, 0.15);
+            color: var(--text-light);
+        }
+        
+        .project-link:hover {
+            background-color: rgba(106, 90, 205, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .project-info h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .project-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        .dark-mode .project-info p {
+            color: #aaa;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 5% 2rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-2);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li i {
+            margin-right: 0.8rem;
+            color: var(--accent-2);
+            width: 20px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--accent-2);
+            margin-right: 1rem;
+            width: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-2);
+            transform: translateY(-5px);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .contact-form button {
+            background-color: var(--accent-2);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            font-size: 1rem;
+            width: 100%;
+        }
+        
+        .contact-form button:hover {
+            background-color: #ffc145;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 209, 102, 0.3);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright a {
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-card);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 99;
+                border-radius: 0 0 20px 20px;
+            }
+            
+            .dark-mode nav ul {
+                background-color: var(--dark-card);
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .search-container {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .expansion-section {
+                padding: 2rem;
+            }
+            
+            .theory-visual {
+                height: 300px;
+            }
+            
+            .theory-visual-content {
+                font-size: 2rem;
+            }
+            
+            .theory-visual-content p {
+                font-size: 1.1rem;
+            }
+            
+            .data-points {
+                gap: 1.5rem;
+            }
+            
+            .data-point {
+                min-width: 140px;
+                padding: 1.2rem;
+            }
+            
+            .data-value {
+                font-size: 2.5rem;
+            }
+            
+            .copyright {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .expansion-section {
+                padding: 1.5rem;
+            }
+            
+            .expansion-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .theory-grid, .motivation-types {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-visual {
+                height: 250px;
+            }
+            
+            .theory-visual-content {
+                font-size: 1.8rem;
+            }
+            
+            .theory-visual-content p {
+                font-size: 1rem;
+            }
+            
+            .data-points {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .data-point {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- 网格背景 -->
+    <div class="grid-background grid-light"></div>
+    
+    <!-- 彩色点 -->
+    <div class="color-dots">
+        <div class="dot" style="width: 20px; height: 20px; background-color: var(--primary-color); top: 15%; left: 8%; animation-delay: 0s;"></div>
+        <div class="dot" style="width: 30px; height: 30px; background-color: var(--accent-1); top: 75%; left: 15%; animation-delay: -5s;"></div>
+        <div class="dot" style="width: 25px; height: 25px; background-color: var(--accent-2); top: 35%; left: 90%; animation-delay: -10s;"></div>
+        <div class="dot" style="width: 22px; height: 22px; background-color: var(--accent-3); top: 85%; left: 85%; animation-delay: -15s;"></div>
+        <div class="dot" style="width: 18px; height: 18px; background-color: var(--secondary-color); top: 60%; left: 5%; animation-delay: -8s;"></div>
+    </div>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <h1>全球教育改革分析</h1>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="motivation.html" class="active">心理动机</a></li>
+                <li><a href="values.html">价值观</a></li>
+                <li><a href="vision.html">学生视野</a></li>
+                <li><a href="cases.html">案例研究</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索心理动机相关内容...">
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+    
+    <!-- 主内容 -->
+    <main>
+        <div class="page-header">
+            <h1>学生心理动机分析</h1>
+            <p>深入探索学生在全球化教育环境中的心理动机结构，分析内在驱动因素与学习成效的关系，为教育创新提供心理学依据。</p>
+            <div class="breadcrumb">
+                <a href="index.html">首页</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>学生心理动机</span>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <div class="main-content">
+                <!-- 第一部分：心理动机理论 -->
+                <div class="expansion-section">
+                    <h2>心理动机理论：学习驱动力的心理学基础</h2>
+                    
+                    <p>学生的学习动机是影响教育成效的核心心理因素。在全球化教育背景下，理解学生的心理动机结构对于设计有效的教育干预措施至关重要。动机理论的发展从行为主义到认知主义，再到社会文化视角，为我们理解学生的学习驱动力提供了多元框架。</p>
+                    
+                    <div class="theory-visual">
+                        <div class="theory-visual-content">
+                            <div>动机结构的多维模型</div>
+                            <p>内在动机与外在动机的动态平衡，决定了学生的学习投入和持久性</p>
+                        </div>
+                    </div>
+                    
+                    <h3>主要动机理论框架</h3>
+                    
+                    <div class="theory-grid">
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <h4>自我决定理论</h4>
+                            <p>强调人类三种基本心理需求：自主性、胜任力和归属感。满足这些需求能促进内在动机的形成和维持，提高学习质量和持久性。</p>
+                        </div>
+                        
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4>目标定向理论</h4>
+                            <p>区分掌握目标（学习为导向）和表现目标（成绩为导向）。掌握目标导向的学生更倾向于面对挑战、坚持学习并采用深层学习策略。</p>
+                        </div>
+                        
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>期望价值理论</h4>
+                            <p>学生的学习动机取决于对成功可能性的期望和对任务价值的认知。高期望与高价值认知共同促进学习投入。</p>
+                        </div>
+                        
+                        <div class="theory-item">
+                            <div class="theory-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>社会认知理论</h4>
+                            <p>强调观察学习、自我效能感和自我调节在学习动机中的作用。高自我效能感的学生更有可能设定挑战性目标并坚持努力。</p>
+                        </div>
+                    </div>
+                    
+                    <h3>全球化背景下学生动机的关键数据</h3>
+                    
+                    <div class="data-points">
+                        <div class="data-point">
+                            <div class="data-value">68%</div>
+                            <div class="data-label">学生认为学习自主性<br>是最大学习动力</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">42%</div>
+                            <div class="data-label">学生缺乏持续学习的<br>内在驱动力</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">57%</div>
+                            <div class="data-label">学生认为国际视野<br>增强学习动机</div>
+                        </div>
+                        
+                        <div class="data-point">
+                            <div class="data-value">74%</div>
+                            <div class="data-label">学生表示教师支持<br>对学习动机至关重要</div>
+                        </div>
+                    </div>
+                    
+                    <h3>动机发展的阶段性特征</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">小学阶段 (6-12岁)</div>
+                            <p><strong>外在动机主导</strong>：动机主要来自外部奖励和成人认可，逐渐发展任务兴趣和好奇心驱动。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">初中阶段 (12-15岁)</div>
+                            <p><strong>动机分化期</strong>：内在动机与外在动机开始分化，同伴影响增强，自我效能感成为重要影响因素。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">高中阶段 (15-18岁)</div>
+                            <p><strong>目标整合期</strong>：学习动机与未来目标连接，职业导向动机增强，自主性需求显著提高。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">大学阶段 (18岁以上)</div>
+                            <p><strong>专业动机形成</strong>：学习动机与专业认同、职业发展紧密相关，内在动机成为持续学习的主要驱动力。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 第二部分：动机类型分析 -->
+                <div class="expansion-section">
+                    <h2>学生动机类型分析：内在与外在动机的交互影响</h2>
+                    
+                    <p>学生的学习动机不是单一维度的，而是由多种动机类型组成的复杂系统。理解这些动机类型的相互作用对于设计有效的教育策略至关重要。研究表明，内在动机与高质量学习成果密切相关，而外在动机在某些情境下也能促进学习。</p>
+                    
+                    <div class="motivation-types">
+                        <!-- 内在动机 -->
+                        <div class="motivation-card">
+                            <div class="motivation-header">
+                                <div class="motivation-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4>内在动机</h4>
+                            </div>
+                            <p>源于活动本身的乐趣和满足感，包括好奇心、兴趣、掌握感和自我表达需求。内在动机驱动的学习更持久、更深入，与创造性思维和问题解决能力正相关。</p>
+                            
+                            <div class="motivation-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">32%</div>
+                                    <div class="stat-label">学生主导</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">高</div>
+                                    <div class="stat-label">学习质量</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">强</div>
+                                    <div class="stat-label">持久性</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 外在动机 -->
+                        <div class="motivation-card">
+                            <div class="motivation-header">
+                                <div class="motivation-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h4>外在动机</h4>
+                            </div>
+                            <p>源于外部奖励或避免惩罚，包括成绩、奖励、认可和避免失败。适当的外在动机可以启动学习行为，但过度依赖可能导致"过度辩护效应"，削弱内在兴趣。</p>
+                            
+                            <div class="motivation-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">45%</div>
+                                    <div class="stat-label">学生主导</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">中</div>
+                                    <div class="stat-label">学习质量</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">中</div>
+                                    <div class="stat-label">持久性</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 认同调节 -->
+                        <div class="motivation-card">
+                            <div class="motivation-header">
+                                <div class="motivation-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h4>认同调节</h4>
+                            </div>
+                            <p>介于内在和外在动机之间，学生认同学习活动的价值并将其内化为个人目标。这种动机类型结合了外部目标的导向性和内部价值的认同感，是教育干预的理想目标。</p>
+                            
+                            <div class="motivation-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">23%</div>
+                                    <div class="stat-label">学生主导</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">高</div>
+                                    <div class="stat-label">学习质量</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">强</div>
+                                    <div class="stat-label">持久性</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3 class="chart-title">不同动机类型对学习成果的影响</h3>
+                        <div style="height: 350px; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; margin-top: 1.5rem;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">内在动机 - 创造性思维</span>
+                                    <span style="font-weight: bold; color: var(--accent-1);">88%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 88%; height: 100%; background: linear-gradient(90deg, var(--accent-1), #ff8ba3);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">认同调节 - 学习坚持性</span>
+                                    <span style="font-weight: bold; color: var(--accent-3);">79%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 79%; height: 100%; background: linear-gradient(90deg, var(--accent-3), #2ae0b0);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">外在动机 - 任务完成率</span>
+                                    <span style="font-weight: bold; color: var(--accent-2);">65%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--accent-2), #ffdf80);"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-weight: bold;">外在动机 - 知识保留率</span>
+                                    <span style="font-weight: bold; color: var(--secondary-color);">42%</span>
+                                </div>
+                                <div style="height: 22px; background: #eee; border-radius: 11px; overflow: hidden;">
+                                    <div style="width: 42%; height: 100%; background: linear-gradient(90deg, var(--secondary-color), #a88de0);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>动机干预策略</h3>
+                    <p>基于动机理论，有效的教育干预应致力于将外在动机内化，并培养和维持内在动机。关键策略包括：提供自主选择机会、创造胜任感体验、建立积极的学习关系、连接学习与个人价值、提供及时有意义的反馈。</p>
+                    
+                    <div style="background-color: rgba(106, 90, 205, 0.1); padding: 1.8rem; border-radius: 15px; margin-top: 2rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.8rem;">核心观点</h4>
+                        <p>学生的心理动机是动态变化的复杂系统，受到个人特质、学习环境和社会文化因素的共同影响。成功的教育干预需要识别学生的当前动机状态，提供适当的挑战和支持，促进动机的内化和整合。在全球化教育背景下，培养学生的全球视野和自我认同可以显著增强学习动机的持久性和质量。</p>
+                    </div>
+                </div>
+                
+                <!-- 第三部分：影响因素与策略 -->
+                <div class="expansion-section">
+                    <h2>动机影响因素与培养策略：系统性框架</h2>
+                    
+                    <p>学生心理动机的形成和发展受到多重因素的复杂影响，这些因素在不同层面相互作用。基于生态系统理论，我们识别出影响学生动机的五个关键层面：个人、课堂、学校、家庭和社会文化层面。</p>
+                    
+                    <h3>关键影响因素</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, #6a5acd, #7d6bd4); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">个人因素</h4>
+                            <p>自我效能感、目标定向、兴趣发展、归因方式、自我调节能力、成长型思维</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #ff6b8b, #ff8ba3); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">课堂因素</h4>
+                            <p>教师支持、自主性氛围、任务设计、评估方式、同伴关系、课堂目标结构</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #ffd166, #ffdf80); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">学校因素</h4>
+                            <p>学校氛围、课程结构、支持服务、领导风格、教师专业发展、资源分配</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #06d6a0, #2ae0b0); color: white; padding: 1.8rem; border-radius: 15px;">
+                            <h4 style="margin-bottom: 0.8rem; font-size: 1.3rem;">家庭因素</h4>
+                            <p>父母期望、家庭学习环境、教养方式、社会经济地位、文化资本、教育价值观</p>
+                        </div>
+                    </div>
+                    
+                    <h3>动机培养策略</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2.5rem 0;">
+                        <div style="background-color: rgba(106, 90, 205, 0.08); padding: 1.8rem; border-radius: 15px; border-left: 5px solid var(--primary-color);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">增强自主性支持</h4>
+                            <ul>
+                                <li>提供有意义的自主选择机会</li>
+                                <li>解释学习活动的目的和价值</li>
+                                <li>使用非控制性的语言</li>
+                                <li>承认学生的观点和感受</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 107, 139, 0.08); padding: 1.8rem; border-radius: 15px; border-left: 5px solid var(--accent-1);">
+                            <h4 style="color: var(--accent-1); margin-bottom: 1rem;">培养胜任感</h4>
+                            <ul>
+                                <li>设置适度的挑战性任务</li>
+                                <li>提供及时有效的反馈</li>
+                                <li>强调进步而非完美</li>
+                                <li>教授学习策略和自我调节技能</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 209, 102, 0.08); padding: 1.8rem; border-radius: 15px; border-left: 5px solid var(--accent-2);">
+                            <h4 style="color: var(--accent-2); margin-bottom: 1rem;">建立归属感</h4>
+                            <ul>
+                                <li>创建积极包容的课堂氛围</li>
+                                <li>促进合作学习和同伴支持</li>
+                                <li>表达对学生的关心和尊重</li>
+                                <li>连接学习与学生的文化和经历</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: rgba(106, 90, 205, 0.1); padding: 2rem; border-radius: 15px; margin-top: 2.5rem;">
+                        <h4>实施建议与未来研究方向</h4>
+                        <p>动机培养需要系统的、多层面的干预，而不是孤立的策略。建议教育者从课堂实践开始，逐步扩展到学校文化和家庭合作。未来研究需要进一步探讨：1) 数字时代学习动机的新特征；2) 跨文化背景下动机发展的异同；3) 动机干预的长期效果评估；4) 动机与创造性、批判性思维的关系。通过持续的研究和实践创新，我们可以更有效地支持学生在全球化时代的学习和发展。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>心理动机资源</h3>
+                    <ul>
+                        <li>自我决定理论指南</li>
+                        <li>动机评估工具包</li>
+                        <li>内在动机培养策略</li>
+                        <li>成长型思维干预方案</li>
+                        <li>教师动机支持手册</li>
+                    </ul>
+                    <a href="#">下载资源包 <i class="fas fa-download"></i></a>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>相关研究</h3>
+                    <ul>
+                        <li>全球学生动机比较研究</li>
+                        <li>数字学习环境中的动机</li>
+                        <li>动机与学业成就的元分析</li>
+                        <li>跨文化动机差异研究</li>
+                        <li>动机干预效果评估</li>
+                    </ul>
+                    <a href="#">查看研究报告 <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                
+                <div class="sidebar-card">
+                    <h3>其他项目网站</h3>
+                    <div class="project-links">
+                        <a href="https://yohayi.github.io/-history/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>信技化生-技术交流</h4>
+                                <p>历史与技术学科交叉研究</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/jinghongzhai--/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>惊鸿斋官方网站</h4>
+                                <p>文化与艺术展示平台</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/my-personal-edu-website/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>杭州市教育总结</h4>
+                                <p>地方教育实践与反思</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/2026--/index.html" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>教育数据与交流</h4>
+                                <p>教育数据分析与可视化</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/geometry-string-map/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-shapes"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>几何弦理论交流</h4>
+                                <p>数学与物理跨学科研究</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/BDCG---/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>BDCG游戏技术</h4>
+                                <p>游戏开发与美术素材</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/yohayi-/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>游海洋个人网站</h4>
+                                <p>个人作品与项目展示</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://yohayi.github.io/-AI-/" class="project-link" target="_blank">
+                            <div class="project-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="project-info">
+                                <h4>流式AI监控</h4>
+                                <p>人工智能应用与监控</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚/联系我们 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>关于我们</h3>
+                <p>全球教育改革分析网站致力于提供数据驱动的教育洞察，帮助政策制定者、教育工作者和研究人员理解全球教育趋势，特别是学生心理发展与学习动机的关系。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i><a href="index.html">首页</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="motivation.html">心理动机分析</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="values.html">价值观分析</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="vision.html">学生视野分析</a></li>
+                    <li><i class="fas fa-chevron-right"></i><a href="cases.html">案例研究</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <span>游海洋</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>133-7788-6896</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@global-edu-analysis.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>教育创新中心, 杭州市</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>发送消息</h3>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="电子邮件" required>
+                    <textarea rows="4" placeholder="您的消息" required></textarea>
+                    <button type="submit">发送消息</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023-2024 全球教育改革分析网站. 保留所有权利.</p>
+            <p>设计者: <a href="https://yohayi.github.io/yohayi-/" target="_blank">游海洋</a> | 电话: 133-7788-6896</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 切换日月模式
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const gridBackground = document.querySelector('.grid-background');
+        
+        // 检查本地存储的主题偏好
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            gridBackground.classList.remove('grid-light');
+            gridBackground.classList.add('grid-dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            
+            if (isDarkMode) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                gridBackground.classList.remove('grid-light');
+                gridBackground.classList.add('grid-dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                gridBackground.classList.remove('grid-dark');
+                gridBackground.classList.add('grid-light');
+            }
+        });
+        
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    alert(`搜索: ${searchTerm}\n\n此功能在完整版本中将显示相关结果。`);
+                    searchInput.value = '';
+                }
+            }
+        });
+        
+        // 导航菜单点击效果
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // 在移动端点击后关闭菜单
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // 联系表单提交
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('感谢您的消息！我们会尽快与您联系。');
+            contactForm.reset();
+        });
+        
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 理论卡片动画
+            const theoryItems = document.querySelectorAll('.theory-item');
+            theoryItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 300 + index * 150);
+            });
+            
+            // 动机卡片动画
+            const motivationCards = document.querySelectorAll('.motivation-card');
+            motivationCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 600 + index * 200);
+            });
+            
+            // 数据点动画
+            const dataValues = document.querySelectorAll('.data-value');
+            dataValues.forEach((value, index) => {
+                const originalText = value.textContent;
+                value.textContent = '0%';
+                
+                setTimeout(() => {
+                    let current = 0;
+                    const target = parseInt(originalText);
+                    const increment = target / 40;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        value.textContent = Math.round(current) + '%';
+                    }, 30);
+                }, 800 + index * 250);
+            });
+            
+            // 图表动画
+            const chartBars = document.querySelectorAll('.chart-container [style*="width"]');
+            chartBars.forEach((bar, index) => {
+                const originalWidth = bar.style.width;
+                bar.style.width = '0%';
+                
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.8s cubic-bezier(0.22, 0.61, 0.36, 1)';
+                    bar.style.width = originalWidth;
+                }, 1200 + index * 300);
+            });
+            
+            // 时间线项目动画
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 1000 + index * 200);
+            });
+            
+            // 侧边栏卡片动画
+            const sidebarCards = document.querySelectorAll('.sidebar-card');
+            sidebarCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateX(0)';
+                }, 500 + index * 150);
+            });
+            
+            // 项目链接悬停效果
+            const projectLinks = document.querySelectorAll('.project-link');
+            projectLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.project-icon');
+                    icon.style.transform = 'rotate(10deg) scale(1.1)';
+                    icon.style.transition = 'transform 0.3s ease';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.project-icon');
+                    icon.style.transform = 'rotate(0) scale(1)';
+                });
+            });
+        });
+        
+        // 滚动动画
+        window.addEventListener('scroll', function() {
+            const expansionSections = document.querySelectorAll('.expansion-section');
+            
+            expansionSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
